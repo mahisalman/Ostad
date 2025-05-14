@@ -1,0 +1,242 @@
+
+ustad
+1. topic
+2. examples
+3. again examples
+4. other systems/policy
+
+Class 1 -
+---------
+=========
+---------
+1. topic
+2. examples
+3. again examples
+4. other systems/policy
+-----------------------
+
+FOR text File
+-------------
+Topic 1.
+============================================================================================================================================================
+This Python code snippet opens (or creates) a file named diary.txt in write mode ('w') and writes two lines of text into it:
+
+with open('diary.txt', 'w') as f:
+    f.write("Day 1: I started learning Python!\n")
+    f.write("Day 2: I learned how to write files.")
+    f.write("Day 3: How to write a new line.")
+
+Explanation:
+------------
+    with open(..., 'w') as f: Opens the file for writing. If it already exists, it will be overwritten.
+
+    f.write(...): Writes the specified string to the file.
+
+    The \n in the first write call adds a newline, so the second entry appears on the next line.
+
+Result in diary.txt:
+--------------------
+Day 1: I started learning Python!
+Day 2: I learned how to write files.
+Day 3: How to write a new line.
+
+++++ If you want to append to the diary in the future (instead of overwriting), use 'a' mode instead of 'w'.
+
+
+Topic 2.
+============================================================================================================================================================
+This code snippet reads and prints the entire content of the diary.txt file:
+
+with open('diary.txt', 'r') as f:
+    print(f.read())
+
+Explanation:
+------------
+    'r' mode opens the file for reading.
+
+    f.read() reads the entire content of the file as a single string.
+
+    print(...) outputs the content to the console.
+
+Expected Output (based on your earlier write code):
+---------------------------------------------------
+Day 1: I started learning Python!
+Day 2: I learned how to write files.
+
+++++ If the file diary.txt doesn’t exist or was moved, this code will raise a FileNotFoundError.
+
+
+For CSV
+-------
+Topic 3.
+============================================================================================================================================================
+This code creates and writes structured tabular data into a CSV file named customer_file.csv:
+
+import csv 
+
+custom_dat = [
+    ["user_name", "user_role", "user_address", "user_contact_number"],
+    ["Person_A", "student", "Dhaka", 1711111111 ],
+    ["Person_B", "Teacher", "Dhaka", 1622222222 ],
+    ["Person_C", "Instructor", "Sylhet", 18333333333 ],
+    ["Person_D", "Class Captain", "Chittagong", 1944444444444 ]
+]
+
+with open("customer_file.csv", mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(custom_dat)
+
+Explanation:
+------------
+    import csv: Imports Python’s built-in CSV module.
+
+    custom_dat: A list of lists representing rows of data; the first row is the header.
+
+    open(..., mode="w", newline=""): Opens the file in write mode with no extra newlines between rows (especially important on Windows).
+
+    writer.writerows(custom_dat): Writes all rows to the CSV file in one go.
+
+Resulting customer_file.csv:
+----------------------------
+user_name,user_role,user_address,user_contact_number
+Person_A,student,Dhaka,1711111111
+Person_B,Teacher,Dhaka,1622222222
+Person_C,Instructor,Sylhet,18333333333
+Person_D,Class Captain,Chittagong,1944444444444
+
+++++ Great! To read the customer_file.csv and display its contents, you can use the following code:
+
+import csv
+
+with open("customer_file.csv", mode="r") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+
+Output:
+-------
+This will print each row as a list:
+
+['user_name', 'user_role', 'user_address', 'user_contact_number']
+['Person_A', 'student', 'Dhaka', '1711111111']
+['Person_B', 'Teacher', 'Dhaka', '1622222222']
+['Person_C', 'Instructor', 'Sylhet', '18333333333']
+['Person_D', 'Class Captain', 'Chittagong', '1944444444444']
+
+Topic 4.
+============================================================================================================================================================
+
+This code writes student results to a CSV file named students_result_file.csv. Here's a breakdown:
+Code Recap:
+
+import csv
+
+student_result = [
+    ["student_name","student_result", "student_result_grade"],
+    ["studentA", 60, "B"],
+    ["studentB", 65, "B"],
+    ["studentC", 85, "A"],
+    ["studentD", 70, "A"],
+    ["studentE", 50, "C"],
+    ["studentF", 40, "C"],
+    ["studentG", 55, "C"],
+    ["studentH", 50, "C"],
+    ["studentI", 10, "F"],
+]
+
+with open("students_result_file.csv", mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(student_result)
+
+Resulting students_result_file.csv:
+-----------------------------------
+student_name,student_result,student_result_grade
+studentA,60,B
+studentB,65,B
+studentC,85,A
+studentD,70,A
+studentE,50,C
+studentF,40,C
+studentG,55,C
+studentH,50,C
+studentI,10,F
+
+Notes:
+newline="" prevents double line spacing issues, especially on Windows.
+Imports the csv module.
+Defines student_result with a header row and multiple student entries.
+Opens a file in write mode ("w") with newline="" to avoid extra blank lines.
+writes all rows using writer.writerows().
+
+
+Topic 5.
+============================================================================================================================================================
+
+pandas
+filter
+modify result
+-------------
+=============
+
+code attempts to do two things:
+Filter students with a grade 'C'
+Filter students with a result (score) less than or equal to 60
+However, depending on the data types in your CSV, there might be an issue with this line:
+
+print(data[data['student_result'] <= 60])
+
+If the student_result column contains strings (e.g., "45", "78"), then comparing strings to an integer (60) will raise an error or yield unexpected results.
+✅ To ensure it works correctly, modify your code as follows:
+-----------------------------------------------------------------------
+
+import pandas as pd
+
+# Load the CSV file
+data = pd.read_csv("students_result_file.csv")
+
+# Show the first few rows
+print(data.head())
+
+# Filter by grade 'C'
+print("Students with grade C:")
+print(data[data['student_result_grade'] == 'C'])
+
+# Ensure student_result is numeric
+data['student_result'] = pd.to_numeric(data['student_result'], errors='coerce')
+
+# Filter by score <= 60
+print("Students with result <= 60:")
+print(data[data['student_result'] <= 60])
+
+Result:-
+========
+stuend_name  student_result student_result_grade
+4    studentE              50                    C
+5    studentF              40                    C
+6    studentG              55                    C
+7    studentH              50                    C
+  stuend_name  student_result student_result_grade
+0    studentA              60                    B
+4    studentE              50                    C
+5    studentF              40                    C
+6    studentG              55                    C
+7    studentH              50                    C
+8    studentI              10                    F
+
+Notes:
+    pd.to_numeric(..., errors='coerce') will convert non-numeric entries to NaN, which are then automatically excluded from numerical comparisons.
+    If your CSV has missing or malformed data in student_result, this prevents the code from crashing.
+
+Topic 6.
+============================================================================================================================================================
+
+Here’s a quick summary of the common newline options:
+Option		Description
+newline=None	Default. Translates all \r, \r\n, and \n to \n on reading; uses system default (e.g., \r\n on Windows) when writing.
+newline=''	No translation. Reads and writes newlines exactly as they appear. Recommended when using the csv module to avoid blank lines, especially on 		Windows.
+newline='\n'	Uses Unix-style LF only.
+newline='\r\n'	Uses Windows-style CRLF only.
+newline='\r'	Uses classic Mac-style CR only. Rarely used today.
+
+Topic 7.
+============================================================================================================================================================
