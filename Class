@@ -238,5 +238,203 @@ newline='\n'	Uses Unix-style LF only.
 newline='\r\n'	Uses Windows-style CRLF only.
 newline='\r'	Uses classic Mac-style CR only. Rarely used today.
 
+
 Topic 7.
 ============================================================================================================================================================
+1:40:00
+json
+Json
+JSON
+API
+
+import json
+
+json_str = '{"message": "Hello", "count": 3, "flag": true, "data": null}'
+data = json.loads(json_str)
+print(type(data), data)
+
+Result:-
+
+import json
+
+json_str = '{"message": "Hello", "count": 3, "flag": true, "data": null}'
+data = json.loads(json_str)
+print(type(data), data)
+
+
+Topic 8.
+============================================================================================================================================================
+1:43:00
+another example
+
+import json
+
+# Define the data
+data = {
+    "name": "frieda",
+    "is_dog": True,
+    "age": 8
+}
+
+# Write to output.json
+with open("output.json", "w") as json_file:
+    json.dump(data, json_file, indent=2)
+
+print("Data saved to output.json")
+
+Result
+------
+
+Outpur.json
+
+{
+  "name": "frieda",
+  "is_dog": true,
+  "age": 8
+}
+
+
+Topic 9.
+============================================================================================================================================================
+1:44:00
+Multiple entry at json
+
+
+import json
+
+# Step 1: Define base data
+data = {
+    "name": "frieda",
+    "is_dog": True,
+    "age": 8
+}
+
+# Step 2: Add more flat entries
+data["color"] = "Brown"
+data["weight_kg"] = 25.4
+data["breed"] = "Labrador"
+data["vaccinated"] = True
+data["favorite_food"] = "chicken"
+data["microchipped"] = False
+data["owner"] = "John Doe"
+
+# Step 3: Print the data
+json_str = json.dumps(data, indent=2)
+print(json_str)
+
+# Step 4: Save to output.json
+with open("output.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2)
+
+print("Data saved to output.json")
+
+Result =>
+---------
+{
+  "name": "frieda",
+  "is_dog": true,
+  "age": 8,
+  "color": "Brown",
+  "weight_kg": 25.4,
+  "breed": "Labrador",
+  "vaccinated": true,
+  "favorite_food": "chicken",
+  "microchipped": false,
+  "owner": "John Doe"
+}
+Data saved to output.json
+
+
+Topic 10
+============================================================================================================================================================
+1:46
+sort
+
+import json
+data = {"b": 22, "a": 100, "d": 46, "c": 89, "e": 78}
+print(json.dumps(data, indent=2, sort_keys=True))
+# {
+#   "a": 1,
+#   "b": 2
+# }
+
+with open("sorted_output.json", "w") as f:
+    json.dump(data, f, indent=2, sort_keys=True)
+
+Result=>
+
+{
+  "a": 100,
+  "b": 22,
+  "c": 89,
+  "d": 46,
+  "e": 78
+}
+
+Topic 11
+============================================================================================================================================================
+1:50:00
+add
+remove
+update
+Access specific values
+Update existing values
+Add new flat entries
+Remove a key if it exists (safe deletion)
+Display updated data
+Save updated data back to a file
+
+
+import json
+
+# Step 1: Load JSON data from file
+with open("output.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+# Step 2: Access specific values
+print("Name:", data["name"])
+print("Favorite food:", data["favorite_food"])
+# print("Microchipped:", data.get("microchipped"))  # Optional safe access
+
+# Step 3: Update existing values
+data["age"] += 2  # Increment age by 2 (birthday!)
+data["favorite_food"] = "Burger"  # Update favorite food
+data["last_vet_visit"] = "2025-07-20"  # Add last vet visit date
+
+# Step 4: Add new flat entries
+data["disliked_food"] = "vegetables"
+data["daily_study_hours"] = 4
+
+# Step 5: Remove a key if it exists (safe deletion)
+data.pop("likes_water", None)
+
+# Step 6: Display updated data
+print("\n🐶 Updated Dog Profile:")
+for key, value in data.items():
+    print(f"{key}: {value}")
+
+# Step 7: Save updated data back to a file
+with open("output_updated.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2)
+
+print("\n✅ Data successfully updated and saved to output_updated.json")
+
+Result =>
+
+{
+  "name": "frieda",
+  "is_dog": true,
+  "age": 10,
+  "color": "Brown",
+  "weight_kg": 25.4,
+  "breed": "Labrador",
+  "vaccinated": true,
+  "favorite_food": "Burger",
+  "microchipped": false,
+  "owner": "John Doe",
+  "last_vet_visit": "2025-07-20",
+  "disliked_food": "vegetables",
+  "daily_study_hours": 4
+}
+
+
