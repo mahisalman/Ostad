@@ -438,3 +438,15 @@ Result =>
 }
 
 
+
+Topic 12:
+==========================================================================================================================================================
+
+📊 CSV vs JSON: Use Case Comparison
+Use Case			CSV		JSON
+Tabular data (rows/columns)	✅ Yes		❌ Not Ideal
+Nested or structured data	❌ No		✅ Yes
+API communication		    ❌ Rare		✅ Standard
+Editable in Excel		    ✅ Easy		❌ Hard
+Configs / settings files	❌ Not used	✅ Common
+Small databases / storage	✅ Simpler	✅ Flexible
