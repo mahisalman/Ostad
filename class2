@@ -1,0 +1,324 @@
+Topic :- 1
+======================================================================================================================================================================
+
+Why need api
+api needs
+json api
+
+-----------------------------
+
+Part 1: API Requests (GET & POST) with requests
+Lecture Slides Content
+
+Slide 1: What is an API?
+
+    Application Programming Interface
+
+    Allows programs to interact with external services
+
+    REST APIs use HTTP verbs (GET, POST, PUT, DELETE)
+
+Slide 2: Why Use APIs?
+
+    Get live data (weather, stock prices, posts, etc.)
+
+    Automate interactions with services (Twitter, GitHub)
+
+Slide 3: Install requests and Setup
+pip install requests
+
+Slide 4: Making a GET Request
+
+import requests
+
+url = "https://jsonplaceholder.typicode.com/posts/1"
+response = requests.get(url)
+
+
+Topic :- 2
+======================================================================================================================================================================
+rerquest api
+get data
+get text from api
+get status
+get json
+
+
+GET request using the requests library and printing out different parts of the response. Here’s a breakdown of what each line does:
+
+import requests
+
+# Sends a GET request to the specified URL
+response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+
+# Parses and prints the response content as a JSON object (dictionary)
+print(response.json())
+
+{'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+
+# Prints the raw response content as a string (text format)
+print(response.text)
+
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+
+# Prints the HTTP status code (should be 200 if successful)
+print(response.status_code)
+
+200
+
+Topic :- 3
+======================================================================================================================================================================
+post request
+post api
+api post
+json post
+
+
+POST request with a JSON payload — this is exactly how you’d typically create a new resource using a REST API.
+
+url = "https://jsonplaceholder.typicode.com/posts"
+
+payload = {
+    "title": "Learn APIs",
+    "body": "POST example with requests",
+    "userId": 1
+}
+
+response = requests.post(url, json=payload)
+
+print("Status Code:", response.status_code)
+print("Response JSON:", response.json())
+
+Expected Output:
+
+Since you're using jsonplaceholder.typicode.com, which is a mock API, it doesn’t actually store the data but simulates a successful response.
+
+You should get:
+
+Status Code: 201
+Response JSON: {
+  "title": "Learn APIs",
+  "body": "POST example with requests",
+  "userId": 1,
+  "id": 101
+}
+
+201 = Created
+
+
+Topic :- 4
+======================================================================================================================================================================
+perameter add
+adding perameter
+
+params = {'id': 10}
+response = requests.get("https://jsonplaceholder.typicode.com/posts",params=params)
+# print(response.json())
+print(response.text)
+
+[
+  {
+    "userId": 1,
+    "id": 10,
+    "title": "optio molestias id quia eum",
+    "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
+  }
+]
+
+--------------------------------------------
+For see all the data at a glance
+
+response = requests.get("https://jsonplaceholder.typicode.com/posts")
+print(response.json())
+print(response.text)
+---------------------------------------------
+params = {'userId': 1}
+response = requests.get("https://jsonplaceholder.typicode.com/posts",params=params)
+# print(response.json())
+print(response.text)
+
+-------------------------------------------------
+
+You're using the params argument correctly — it's used to pass query parameters in a GET request (i.e., what appears after the ? in a URL). Here's how it works and more examples to deepen your understanding.
+✅ Example 1: Filter post by ID
+
+params = {'id': 10}
+response = requests.get("https://jsonplaceholder.typicode.com/posts", params=params)
+print(response.json())
+
+Result: A list with a single post where "id": 10.
+✅ Example 2: Multiple query parameters
+
+params = {'userId': 1, 'id': 5}
+response = requests.get("https://jsonplaceholder.typicode.com/posts", params=params)
+print(response.json())
+
+Result: Posts with userId = 1 and id = 5 (filters by both fields).
+✅ Example 3: Get all posts from a specific user
+
+params = {'userId': 3}
+response = requests.get("https://jsonplaceholder.typicode.com/posts", params=params)
+print(response.json())
+
+Result: A list of all posts made by userId = 3.
+✅ Example 4: No params (get all posts)
+
+response = requests.get("https://jsonplaceholder.typicode.com/posts")
+print(response.json())
+
+Result: A list of all 100 posts.
+✅ Example 5: Send params with a search term (used in real APIs)
+
+params = {'q': 'Python', 'limit': 5}
+response = requests.get("https://api.example.com/search", params=params)
+
+This won't work with jsonplaceholder, but it's common for real APIs — q for "query", limit for number of results.
+
+
+Topic :- 5
+======================================================================================================================================================================
+api call
+data filter
+
+
+import requests
+
+url = "https://api.open-meteo.com/v1/forecast"
+
+params = {
+    "latitude": 23.8041,         # Dhaka
+    "longitude": 90.4152,
+    "current_weather": True
+}
+
+# Make the GET request
+response = requests.get(url, params=params)
+
+# Check if the request was successful
+if response.status_code == 200:
+    data = response.json()
+    weather = data["current_weather"]
+    print(f"Weather in Dhaka:")
+    print(f"Temperature: {weather['temperature']}°C")
+    print(f"Windspeed: {weather['windspeed']} km/h")
+    print(f"Time: {weather['time']}")
+else:
+    print(f"Failed to fetch weather data. Status code: {response.status_code}")
+
+Result =>
+
+Weather in Dhaka:
+Temperature: 33.2°C
+Windspeed: 7.8 km/h
+Time: 2025-05-16T10:30
+
+------------------------------------
+
+import requests
+import json
+import csv
+
+# --- Step 1: API Call ---
+url = "https://api.open-meteo.com/v1/forecast"
+params = {
+    "latitude": 23.8103,     # Dhaka latitude
+    "longitude": 90.4125,    # Dhaka longitude
+    "current_weather": True
+}
+response = requests.get(url, params=params)
+
+# --- Step 2: Check and Extract Data ---
+if response.status_code == 200:
+    data = response.json()
+    weather = data["current_weather"]
+    print(f" Weather in Dhaka:")
+    print(f"Temperature: {weather['temperature']}°C")
+    print(f"Windspeed: {weather['windspeed']} km/h")
+    print(f"Time: {weather['time']}")
+
+    # --- Step 3a: Save to JSON ---
+    with open("weather_dhaka.json", "w") as json_file:
+        json.dump(weather, json_file, indent=4)
+        print(" Saved to weather_dhaka.json")
+
+    # --- Step 3b: Save to CSV ---
+    with open("weather_dhaka.csv", "w", newline="") as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["temperature", "windspeed", "time"])  # Header
+        writer.writerow([weather["temperature"], weather["windspeed"], weather["time"]])
+        print(" Saved to weather_dhaka.csv")
+else:
+    print(" Error fetching weather data:", response.status_code)
+
+
+Result =>
+
+Weather in Dhaka:
+Temperature: 33.2 °C
+Windspeed: 7.8 km/h
+Time: 2025-05-16T10:30
+ Saved to weather_dhaka.json
+
+& 
+saved in both csv and json
+
+Topic :- 6
+======================================================================================================================================================================
+
+
+
+
+import requests
+import csv
+import json
+
+
+-------------------------
+
+url = "http://quotes.toscrape.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+
+----------------------------
+
+import requests
+from bs4 import BeautifulSoup
+import csv
+import json
+
+# Step 1: Fetch the page
+url = "http://quotes.toscrape.com"
+response = requests.get(url)
+
+if response.status_code != 200:
+    print(f"Failed to fetch page. Status code: {response.status_code}")
+    exit()
+
+soup = BeautifulSoup(response.text, "html.parser")
+
+# Step 2: Extract quotes and authors
+quotes_data = []
+quotes = soup.find_all("div", class_="quote")
+
+for quote in quotes:
+    text = quote.find("span", class_="text").text.strip()
+    author = quote.find("small", class_="author").text.strip()
+    quotes_data.append({"quote": text, "author": author})
+
+# Step 3: Save to JSON
+with open("quotes.json", "w", encoding="utf-8") as json_file:
+    json.dump(quotes_data, json_file, indent=4, ensure_ascii=False)
+    print("Saved to quotes.json")
+
+# Step 4: Save to CSV
+with open("quotes.csv", "w", newline='', encoding="utf-8") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=["quote", "author"])
+    writer.writeheader()
+    writer.writerows(quotes_data)
+    print("Saved to quotes.csv")
