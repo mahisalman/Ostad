@@ -267,26 +267,406 @@ Time: 2025-05-16T10:30
 & 
 saved in both csv and json
 
+
+
+
 Topic :- 6
 ======================================================================================================================================================================
-
-
+web scrapting
+website data 
+get website data
 
 
 import requests
-import csv
-import json
+
+pip install beautifulsoup4
+
+from bs4 import BeautifulSoup
+---------------------------------------------
+import requests
+
+url = "https://example.com"
+
+response = requests.get(url)         # Sends an HTTP GET request
+html_content = response.text         # Gets the response body (HTML as text)
+
+print(html_content[:10000])          # Prints the first 10,000 characters
 
 
--------------------------
+Result =>
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+    ...
+</head>
+<body>
+    <div>
+        <h1>Example Domain</h1>
+        <p>This domain is for use in illustrative examples in documents.</p>
+        ...
+    </div>
+</body>
+</html>
+
+
+Topic :- 7
+======================================================================================================================================================================
+Finding specific content
+
+header exist or not
+
+1:40:00
+-------
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://example.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+headings = soup.find_all("h1")  # You can change to h2, h3, etc.
+
+for h in headings:
+    print(h.text.strip())
+
+Result=>
+========
+Example Domain
+
+--------------------------------------------------------------------------------
+a (anchor) tag finding
+Find and Print All <a> Tags
+
+
+import requests
+from bs4 import BeautifulSoup
+
+# Step 1: Fetch the webpage
+url = "https://example.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+# Step 2: Find all <a> tags
+links = soup.find_all("a")
+
+# Step 3: Loop and print each link's text and URL
+for i, link in enumerate(links, start=1):
+    text = link.text.strip()
+    href = link.get("href")
+    print(f"{i}. Text: '{text}' | Href: {href}")
+
+Result =>
+=========
+Text: 'More information...' | Href: https://www.iana.org/domains/example
+
+--------------------------------------------------------------------------------
+p ((peragraph) tag finding
+Find and print all <p> tag
+
+import requests
+from bs4 import BeautifulSoup
+
+# Step 1: Fetch the webpage
+url = "https://example.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+# Step 2: Find all <a> tags
+links = soup.find_all("p")
+
+# Step 3: Loop and print each link's text and URL
+for i, link in enumerate(links, start=1):
+    text = link.text.strip()
+    href = link.get("href")
+    print(f"{i}. Text: '{text}' | Href: {href}")
+
+Result=>
+========
+1. Text: 'This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.' | Href: None
+2. Text: 'More information...' | Href: None
+
+
+Topic :- 8
+======================================================================================================================================================================
+
+import requests
+from bs4 import BeautifulSoup
+
+# Step 1: Fetch the webpage
+url = "https://www.iana.org/help/example-domains"
+response = requests.get(url)
+html_content = response.text
+
+# Step 2: Parse HTML with BeautifulSoup
+soup = BeautifulSoup(html_content, "html.parser")
+
+# Step 3: Find all <a> tags and extract href attributes
+hrefs = []
+for link in soup.find_all("a"):
+    href = link.get("href")
+    if href:
+        hrefs.append(href)
+        print(href)
+
+Result =>
+
+/
+/domains
+/protocols
+/numbers
+/about
+/go/rfc2606
+/go/rfc6761
+/domains/reserved
+/domains
+/domains/root
+/domains/int
+/domains/arpa
+/domains/idn-tables
+/numbers
+/abuse
+/protocols
+/protocols
+/time-zones
+/about
+/news
+/performance
+/about/excellence
+/archive
+/contact
+https://pti.icann.org
+http://www.icann.org/
+https://www.icann.org/privacy/policy
+https://www.icann.org/privacy/tos
+
+
+--------------------------
+Find all the links
+
+import requests
+from bs4 import BeautifulSoup
+
+# Step 1: Fetch the webpage
+url = "https://www.iana.org/help/example-domains"
+response = requests.get(url)
+html_content = response.text
+
+# Step 2: Parse HTML
+soup = BeautifulSoup(html_content, "html.parser")
+
+# Step 3: Find and print anchor text + href
+print("🔗 All anchor tags and their links:\n")
+for a in soup.find_all("a"):
+    text = a.text.strip()
+    href = a.get("href")
+    if href:
+        print(f"Text: '{text}'  |  Link: {href}")
+
+Result =>
+---------
+
+All anchor tags and their links:
+
+Text: ''  |  Link: /
+Text: 'Domains'  |  Link: /domains
+Text: 'Protocols'  |  Link: /protocols
+Text: 'Numbers'  |  Link: /numbers
+Text: 'About'  |  Link: /about
+Text: 'RFC 2606'  |  Link: /go/rfc2606
+Text: 'RFC 6761'  |  Link: /go/rfc6761
+Text: 'IANA-managed Reserved Domains'  |  Link: /domains/reserved
+Text: 'Domain Names'  |  Link: /domains
+Text: 'Root Zone Registry'  |  Link: /domains/root
+Text: '.INT Registry'  |  Link: /domains/int
+Text: '.ARPA Registry'  |  Link: /domains/arpa
+Text: 'IDN Repository'  |  Link: /domains/idn-tables
+Text: 'Number Resources'  |  Link: /numbers
+Text: 'Abuse Information'  |  Link: /abuse
+Text: 'Protocols'  |  Link: /protocols
+Text: 'Protocol Registries'  |  Link: /protocols
+Text: 'Time Zone Database'  |  Link: /time-zones
+Text: 'About Us'  |  Link: /about
+Text: 'News'  |  Link: /news
+Text: 'Performance'  |  Link: /performance
+Text: 'Excellence'  |  Link: /about/excellence
+Text: 'Archive'  |  Link: /archive
+Text: 'Contact Us'  |  Link: /contact
+Text: 'Public Technical Identifiers'  |  Link: https://pti.icann.org
+Text: 'ICANN'  |  Link: http://www.icann.org/
+Text: 'Privacy Policy'  |  Link: https://www.icann.org/privacy/policy
+Text: 'Terms of Service'  |  Link: https://www.icann.org/privacy/tos
+
+Notes:
+.text.strip() removes extra whitespace from anchor text.
+.get("href") safely retrieves the link (avoids errors if href is missing).
+
+
+Topic :- 9
+======================================================================================================================================================================
+python.org
+data scraping
+
+1:51:00
+
+
+import requests
+from bs4 import BeautifulSoup
+
+# Step 1: Fetch the webpage
+url = "https://www.python.org"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+# Step 2: Find the jobs section
+jobs_section = soup.find("div", class_="medium-widget blog-widget")
+
+# Step 3: Extract job listings (usually inside <ul> → <li>)
+job_list = jobs_section.find_all("li")
+
+# Step 4: Print each job with its title and date
+print("📌 Latest Python Job Postings:\n")
+for job in job_list:
+    title = job.find("a").text.strip()
+    date = job.find("time").text.strip()
+    print(f"{date} — {title}")
+
+Result =>
+---------
+📌 Latest Python Job Postings:
+
+2025-05-07 — Python 3.14.0 beta 1 is here!
+2025-05-06 — Announcing Python Software Foundation Fellow Members for Q1 2025! 🎉
+2025-05-01 — A thank you to the Oregon State University Open Source Lab
+2025-05-01 — Python Software Foundation Names New Deputy Executive Director
+2025-04-24 — 2025 PSF Board Election Schedule Change
+
+----------------------------------------------------------------------------------------
+several practical web scraping examples using Python and BeautifulSoup for different purposes — from headlines to quotes, tables, images, and product prices:
+1. Scrape Latest News Headlines (from CNN, BBC, etc.)
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.bbc.com/news"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+headlines = soup.find_all("h3")[:10]  # First 10 headlines
+
+print("📰 BBC News Headlines:")
+for h in headlines:
+    print("-", h.text.strip())
+
+Result=>
+--------
+📰 BBC News Headlines:
+-----------------------------------------------------------------------------------------------------------------------------------------
+2. Scrape Quotes from http://quotes.toscrape.com
+
+url = "http://quotes.toscrape.com"
+soup = BeautifulSoup(requests.get(url).text, "html.parser")
+
+quotes = soup.find_all("div", class_="quote")
+
+for q in quotes:
+    text = q.find("span", class_="text").text
+    author = q.find("small", class_="author").text
+    print(f"“{text}” — {author}")
+
+Result =>
+---------
+““The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”” — Albert Einstein
+““It is our choices, Harry, that show what we truly are, far more than our abilities.”” — J.K. Rowling
+““There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”” — Albert Einstein
+““The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”” — Jane Austen
+““Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”” — Marilyn Monroe
+““Try not to become a man of success. Rather become a man of value.”” — Albert Einstein
+““It is better to be hated for what you are than to be loved for what you are not.”” — André Gide
+““I have not failed. I've just found 10,000 ways that won't work.”” — Thomas A. Edison
+““A woman is like a tea bag; you never know how strong it is until it's in hot water.”” — Eleanor Roosevelt
+““A day without sunshine is like, you know, night.”” — Steve Martin
+-----------------------------------------------------------------------------------------------------------------------------------------------
+📊 3. Scrape Tables (e.g., COVID Stats from Worldometer)
+
+url = "https://www.worldometers.info/coronavirus/"
+soup = BeautifulSoup(requests.get(url).text, "html.parser")
+
+table = soup.find("table", id="main_table_countries_today")
+rows = table.find_all("tr")[1:6]  # Skip header row, limit to first 5
+
+for row in rows:
+    cols = row.find_all("td")
+    country = cols[1].text.strip()
+    cases = cols[2].text.strip()
+    deaths = cols[4].text.strip()
+    print(f"{country}: {cases} cases, {deaths} deaths")
+
+Result=>
+--------
+
+North America: 131,889,132 cases, 1,695,941 deaths
+Asia: 221,500,265 cases, 1,553,662 deaths
+Europe: 253,406,198 cases, 2,101,824 deaths
+South America: 70,200,879 cases, 1,367,332 deaths
+Oceania: 14,895,771 cases, 33,015 deaths
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+🛒 4. Scrape Product Names and Prices from an E-commerce Page
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+products = soup.find_all("div", class_="thumbnail")
+
+for p in products[:5]:
+    title_tag = p.find("a", class_="title")
+    price_tag = p.find("h4", class_="pull-right price")
+    
+    title = title_tag.text.strip() if title_tag else "No Title"
+    price = price_tag.text.strip() if price_tag else "No Price"
+
+    print(f"{title} — {price}")
+
+Result=>
+--------
+
+Asus VivoBook... — No Price
+Prestigio Smar... — No Price
+Prestigio Smar... — No Price
+Aspire E1-510 — No Price
+Lenovo V110-15... — No Price
+
+
+Topic :- 10
+======================================================================================================================================================================
+web scrap
+from https://quotes.toscrape.com/
+web data scrap
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+import requests
+from bs4 import BeautifulSoup
 
 url = "http://quotes.toscrape.com"
 response = requests.get(url)
 soup = BeautifulSoup(response.text, "html.parser")
+print(soup)
+-----------------------------------------------------------------------------------------------------------------------------------------
+quotes = soup.find_all("div", class_="quote")
 
-
-----------------------------
-
+for quote in quotes:
+    text = quote.find("span", class_="text").text.strip()
+    author = quote.find("small", class_="author").text.strip()
+    print(f"{text} — {author}")
+-----------------------------------------------------------------------------------------------------------------------------------------
 import requests
 from bs4 import BeautifulSoup
 import csv
@@ -295,30 +675,240 @@ import json
 # Step 1: Fetch the page
 url = "http://quotes.toscrape.com"
 response = requests.get(url)
-
-if response.status_code != 200:
-    print(f"Failed to fetch page. Status code: {response.status_code}")
-    exit()
-
 soup = BeautifulSoup(response.text, "html.parser")
 
 # Step 2: Extract quotes and authors
 quotes_data = []
-quotes = soup.find_all("div", class_="quote")
 
+quotes = soup.find_all("div", class_="quote")
 for quote in quotes:
     text = quote.find("span", class_="text").text.strip()
     author = quote.find("small", class_="author").text.strip()
     quotes_data.append({"quote": text, "author": author})
 
+
+
 # Step 3: Save to JSON
 with open("quotes.json", "w", encoding="utf-8") as json_file:
     json.dump(quotes_data, json_file, indent=4, ensure_ascii=False)
-    print("Saved to quotes.json")
+    print(" Saved to quotes.json")
+-----------------------------------------------------------------------------------------------------------------------------------------
 
-# Step 4: Save to CSV
-with open("quotes.csv", "w", newline='', encoding="utf-8") as csv_file:
-    writer = csv.DictWriter(csv_file, fieldnames=["quote", "author"])
-    writer.writeheader()
-    writer.writerows(quotes_data)
-    print("Saved to quotes.csv")
+import requests
+from bs4 import BeautifulSoup
+import json
+
+base_url = "https://quotes.toscrape.com"
+url = "/"
+
+all_quotes = []  # List to hold all quote data
+
+while url:
+    response = requests.get(base_url + url)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Extract quotes from the current page
+    quotes = soup.find_all("div", class_="quote")
+
+    for quote in quotes:
+        text = quote.find("span", class_="text").text.strip()
+        author = quote.find("small", class_="author").text.strip()
+        tags = [tag.text for tag in quote.find_all("a", class_="tag")]
+
+        all_quotes.append({
+            "quote": text,
+            "author": author,
+        })
+
+    # Find the "Next" page URL
+    next_button = soup.find("li", class_="next")
+    url = next_button.find("a")["href"] if next_button else None
+
+# Save to a JSON file
+with open("quotes.json", "w", encoding="utf-8") as f:
+    json.dump(all_quotes, f, indent=2, ensure_ascii=False)
+
+print(f"{len(all_quotes)} quotes saved to quotes.json ✅")
+
+
+Result =>
+---------
+100 quotes saved to quotes.json
+
+
+Topic :- 11
+======================================================================================================================================================================
+
+data cleaning
+missing values
+formatting
+null values
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+# data_1a =  {"Name": "John", "Age": 25, "Email": "john@example.com", "Salary": 50000}
+# # print(type(data_1a))
+# print(print(data_1a["Age"]))
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+import pandas as pd
+
+# Step 1: Create the data as a list of dictionaries
+data = [
+    {"Name": "John", "Age": 25, "Email": "john@example.com", "Salary": 50000},
+    {"Name": None, "Age": 29, "Email": None, "Salary": 55000},
+    {"Name": "Linda", "Age": None, "Email": "linda@example.com", "Salary": None},
+    {"Name": "Mike", "Age": 22, "Email": "mike@example.com", "Salary": 48000}
+]
+
+print(type(data))
+print((data[2]))
+
+
+# Step 2: Create a DataFrame
+df = pd.DataFrame(data)
+print(df)
+
+# Step 3: Save to CSV
+df.to_csv("people_data.csv", index=False)
+print(" CSV saved as 'people_data.csv'")
+
+Result =>
+
+<class 'list'>
+{'Name': 'Linda', 'Age': None, 'Email': 'linda@example.com', 'Salary': None}
+    Name   Age              Email   Salary
+0   John  25.0   john@example.com  50000.0
+1   None  29.0               None  55000.0
+2  Linda   NaN  linda@example.com      NaN
+3   Mike  22.0   mike@example.com  48000.0
+ CSV saved as 'people_data.csv'
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+import pandas as pd
+
+# Load your dataset
+df = pd.read_csv("people_data.csv")
+print(df)
+
+Result=>
+
+    Name   Age              Email   Salary
+0   John  25.0   john@example.com  50000.0
+1    NaN  29.0                NaN  55000.0
+2  Linda   NaN  linda@example.com      NaN
+3   Mike  22.0   mike@example.com  48000.0
+
+---------------------------------------------------------------------------------------------------------------------------------------
+Find the missing value
+-----------------------
+
+print(df.isnull())
+print(df.isnull().sum())
+
+Result=>
+
+    Name    Age  Email  Salary
+0  False  False  False   False
+1   True  False   True   False
+2  False   True  False    True
+3  False  False  False   False
+Name      1
+Age       1
+Email     1
+Salary    1
+dtype: int64
+
+---------------------------------------------------------------------------------------------------------------------------------------
+removing the null values
+
+
+
+import pandas as pd
+
+# Step 1: Load your dataset
+df = pd.read_csv("people_data.csv")
+print("Original Data:")
+print(df)
+
+# Step 2: Show missing values
+print("\nMissing Value Map:")
+print(df.isnull())
+
+print("\nMissing Value Count per Column:")
+print(df.isnull().sum())
+
+# Option 1: Drop rows with any missing values
+# df.dropna(inplace=True)
+
+# Option 2: Or fill missing values with 0 (choose one approach)
+df.fillna(0, inplace=True)
+
+# Step 3: Remove duplicate rows
+df.drop_duplicates(inplace=True)
+
+# Step 4: Show cleaned data
+print("\nCleaned Data:")
+print(df)
+
+
+Result =>
+
+Original Data:
+    Name   Age              Email  Salary
+0   John  25.0   john@example.com   50000
+1    NaN  29.0          A@123.com   55000
+2  Linda   NaN  linda@example.com   80000
+3   Mike  22.0   mike@example.com   48000
+
+Missing Value Map:
+    Name    Age  Email  Salary
+0  False  False  False   False
+1   True  False  False   False
+2  False   True  False   False
+3  False  False  False   False
+
+Missing Value Count per Column:
+Name      1
+Age       1
+Email     0
+Salary    0
+dtype: int64
+
+Cleaned Data:
+    Name   Age              Email  Salary
+0   John  25.0   john@example.com   50000
+1      0  29.0          A@123.com   55000
+2  Linda   0.0  linda@example.com   80000
+3   Mike  22.0   mike@example.com   48000
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+import pandas as pd
+
+# Step 1: Load the CSV
+df = pd.read_csv("people_data.csv")
+
+# Step 2: Drop rows that contain any None/NaN values
+df.dropna(inplace=True)
+
+# Step 3: Save the cleaned DataFrame back to a CSV
+df.to_csv("people_data_cleaned.csv", index=False)
+
+print("Cleaned CSV saved as 'people_data_cleaned.csv' (no rows with missing values).")
+
+Result =>
+
+
+
+Cleaned CSV saved as 'people_data_cleaned.csv' (no rows with missing values).
+
+
+
+1 to 2 of 2 entries
+Name	Age	Email	Salary
+John	25.0	john@example.com	50000
+Mike	22.0	mike@example.com	48000
+
