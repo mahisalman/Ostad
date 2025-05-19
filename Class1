@@ -1,22 +1,25 @@
 
-📘 USTAD Full Guide
 ustad
+1. topic
+2. examples
+3. again examples
+4. other systems/policy
 
-    Topic
+Class 1 -
+---------
+=========
+---------
+1. topic
+2. examples
+3. again examples
+4. other systems/policy
+-----------------------
 
-    Examples
-
-    Again Examples
-
-    Other Systems/Policy
-
-Class 1
-1. Topic
-2. Examples
-3. Again Examples
-4. Other Systems/Policy
-📂 FOR Text File
-Topic 1. Writing to a File
+FOR text File
+-------------
+Topic 1.
+============================================================================================================================================================
+This Python code snippet opens (or creates) a file named diary.txt in write mode ('w') and writes two lines of text into it:
 
 with open('diary.txt', 'w') as f:
     f.write("Day 1: I started learning Python!\n")
@@ -24,39 +27,50 @@ with open('diary.txt', 'w') as f:
     f.write("Day 3: How to write a new line.")
 
 Explanation:
+------------
+    with open(..., 'w') as f: Opens the file for writing. If it already exists, it will be overwritten.
 
-    with open(..., 'w') as f: Opens the file for writing. If it exists, overwrites it.
+    f.write(...): Writes the specified string to the file.
 
-    f.write(...): Writes strings to file.
+    The \n in the first write call adds a newline, so the second entry appears on the next line.
 
-    \n: Adds new line.
-
-Result:
-
+Result in diary.txt:
+--------------------
 Day 1: I started learning Python!
 Day 2: I learned how to write files.
 Day 3: How to write a new line.
 
-➕ To append, use 'a' mode.
-Topic 2. Reading a File
+++++ If you want to append to the diary in the future (instead of overwriting), use 'a' mode instead of 'w'.
+
+
+Topic 2.
+============================================================================================================================================================
+This code snippet reads and prints the entire content of the diary.txt file:
 
 with open('diary.txt', 'r') as f:
     print(f.read())
 
 Explanation:
+------------
+    'r' mode opens the file for reading.
 
-    'r' mode opens file for reading.
+    f.read() reads the entire content of the file as a single string.
 
-    f.read() reads entire file content.
+    print(...) outputs the content to the console.
 
-Output:
-
+Expected Output (based on your earlier write code):
+---------------------------------------------------
 Day 1: I started learning Python!
 Day 2: I learned how to write files.
 
-❗ If file doesn’t exist, raises FileNotFoundError.
-📂 FOR CSV
-Topic 3. Writing Tabular CSV
+++++ If the file diary.txt doesn’t exist or was moved, this code will raise a FileNotFoundError.
+
+
+For CSV
+-------
+Topic 3.
+============================================================================================================================================================
+This code creates and writes structured tabular data into a CSV file named customer_file.csv:
 
 import csv 
 
@@ -72,76 +86,206 @@ with open("customer_file.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
     writer.writerows(custom_dat)
 
-Result:
+Explanation:
+------------
+    import csv: Imports Python’s built-in CSV module.
 
+    custom_dat: A list of lists representing rows of data; the first row is the header.
+
+    open(..., mode="w", newline=""): Opens the file in write mode with no extra newlines between rows (especially important on Windows).
+
+    writer.writerows(custom_dat): Writes all rows to the CSV file in one go.
+
+Resulting customer_file.csv:
+----------------------------
 user_name,user_role,user_address,user_contact_number
 Person_A,student,Dhaka,1711111111
-...
+Person_B,Teacher,Dhaka,1622222222
+Person_C,Instructor,Sylhet,18333333333
+Person_D,Class Captain,Chittagong,1944444444444
 
-To read:
+++++ Great! To read the customer_file.csv and display its contents, you can use the following code:
+
+import csv
 
 with open("customer_file.csv", mode="r") as file:
     reader = csv.reader(file)
     for row in reader:
         print(row)
 
-Topic 4. Writing Student Results CSV
+Output:
+-------
+This will print each row as a list:
+
+['user_name', 'user_role', 'user_address', 'user_contact_number']
+['Person_A', 'student', 'Dhaka', '1711111111']
+['Person_B', 'Teacher', 'Dhaka', '1622222222']
+['Person_C', 'Instructor', 'Sylhet', '18333333333']
+['Person_D', 'Class Captain', 'Chittagong', '1944444444444']
+
+Topic 4.
+============================================================================================================================================================
+
+This code writes student results to a CSV file named students_result_file.csv. Here's a breakdown:
+Code Recap:
 
 import csv
 
 student_result = [
     ["student_name","student_result", "student_result_grade"],
     ["studentA", 60, "B"],
-    ...
+    ["studentB", 65, "B"],
+    ["studentC", 85, "A"],
+    ["studentD", 70, "A"],
+    ["studentE", 50, "C"],
+    ["studentF", 40, "C"],
+    ["studentG", 55, "C"],
+    ["studentH", 50, "C"],
+    ["studentI", 10, "F"],
 ]
 
 with open("students_result_file.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
     writer.writerows(student_result)
 
-Topic 5. Filtering CSV with pandas
+Resulting students_result_file.csv:
+-----------------------------------
+student_name,student_result,student_result_grade
+studentA,60,B
+studentB,65,B
+studentC,85,A
+studentD,70,A
+studentE,50,C
+studentF,40,C
+studentG,55,C
+studentH,50,C
+studentI,10,F
+
+Notes:
+newline="" prevents double line spacing issues, especially on Windows.
+Imports the csv module.
+Defines student_result with a header row and multiple student entries.
+Opens a file in write mode ("w") with newline="" to avoid extra blank lines.
+writes all rows using writer.writerows().
+
+
+Topic 5.
+============================================================================================================================================================
+
+pandas
+filter
+modify result
+-------------
+=============
+
+code attempts to do two things:
+Filter students with a grade 'C'
+Filter students with a result (score) less than or equal to 60
+However, depending on the data types in your CSV, there might be an issue with this line:
+
+print(data[data['student_result'] <= 60])
+
+If the student_result column contains strings (e.g., "45", "78"), then comparing strings to an integer (60) will raise an error or yield unexpected results.
+✅ To ensure it works correctly, modify your code as follows:
+-----------------------------------------------------------------------
 
 import pandas as pd
 
+# Load the CSV file
 data = pd.read_csv("students_result_file.csv")
 
-# Grade 'C'
+# Show the first few rows
+print(data.head())
+
+# Filter by grade 'C'
+print("Students with grade C:")
 print(data[data['student_result_grade'] == 'C'])
 
-# Ensure numeric
+# Ensure student_result is numeric
 data['student_result'] = pd.to_numeric(data['student_result'], errors='coerce')
 
-# Filter <= 60
+# Filter by score <= 60
+print("Students with result <= 60:")
 print(data[data['student_result'] <= 60])
 
-Topic 6. newline Behavior
-Option	Description
-None	Default. Uses system newline for writing.
-''	No translation. Use for CSV.
-'\n'	Unix-style LF
-'\r\n'	Windows-style CRLF
-📂 JSON
-Topic 7. Basic JSON Read
+Result:-
+========
+stuend_name  student_result student_result_grade
+4    studentE              50                    C
+5    studentF              40                    C
+6    studentG              55                    C
+7    studentH              50                    C
+  stuend_name  student_result student_result_grade
+0    studentA              60                    B
+4    studentE              50                    C
+5    studentF              40                    C
+6    studentG              55                    C
+7    studentH              50                    C
+8    studentI              10                    F
+
+Notes:
+    pd.to_numeric(..., errors='coerce') will convert non-numeric entries to NaN, which are then automatically excluded from numerical comparisons.
+    If your CSV has missing or malformed data in student_result, this prevents the code from crashing.
+
+Topic 6.
+============================================================================================================================================================
+
+Here’s a quick summary of the common newline options:
+Option		Description
+newline=None	Default. Translates all \r, \r\n, and \n to \n on reading; uses system default (e.g., \r\n on Windows) when writing.
+newline=''	No translation. Reads and writes newlines exactly as they appear. Recommended when using the csv module to avoid blank lines, especially on 		Windows.
+newline='\n'	Uses Unix-style LF only.
+newline='\r\n'	Uses Windows-style CRLF only.
+newline='\r'	Uses classic Mac-style CR only. Rarely used today.
+
+
+Topic 7.
+============================================================================================================================================================
+1:40:00
+json
+Json
+JSON
+API
 
 import json
+
 json_str = '{"message": "Hello", "count": 3, "flag": true, "data": null}'
 data = json.loads(json_str)
 print(type(data), data)
 
-Topic 8. Writing JSON to File
+Result:-
 
 import json
 
+json_str = '{"message": "Hello", "count": 3, "flag": true, "data": null}'
+data = json.loads(json_str)
+print(type(data), data)
+
+
+Topic 8.
+============================================================================================================================================================
+1:43:00
+another example
+
+import json
+
+# Define the data
 data = {
     "name": "frieda",
     "is_dog": True,
     "age": 8
 }
 
+# Write to output.json
 with open("output.json", "w") as json_file:
     json.dump(data, json_file, indent=2)
 
-Output in file:
+print("Data saved to output.json")
+
+Result
+------
+
+Outpur.json
 
 {
   "name": "frieda",
@@ -149,58 +293,160 @@ Output in file:
   "age": 8
 }
 
-Topic 9. Expanded JSON Entry
 
-data["color"] = "Brown"
-data["weight_kg"] = 25.4
-...
+Topic 9.
+============================================================================================================================================================
+1:44:00
+Multiple entry at json
 
-Result:
 
-{
-  "name": "frieda",
-  ...
-  "favorite_food": "chicken",
-  "microchipped": false
+import json
+
+# Step 1: Define base data
+data = {
+    "name": "frieda",
+    "is_dog": True,
+    "age": 8
 }
 
-Topic 10. Sort JSON Keys
+# Step 2: Add more flat entries
+data["color"] = "Brown"
+data["weight_kg"] = 25.4
+data["breed"] = "Labrador"
+data["vaccinated"] = True
+data["favorite_food"] = "chicken"
+data["microchipped"] = False
+data["owner"] = "John Doe"
 
+# Step 3: Print the data
+json_str = json.dumps(data, indent=2)
+print(json_str)
+
+# Step 4: Save to output.json
+with open("output.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2)
+
+print("Data saved to output.json")
+
+Result =>
+---------
+{
+  "name": "frieda",
+  "is_dog": true,
+  "age": 8,
+  "color": "Brown",
+  "weight_kg": 25.4,
+  "breed": "Labrador",
+  "vaccinated": true,
+  "favorite_food": "chicken",
+  "microchipped": false,
+  "owner": "John Doe"
+}
+Data saved to output.json
+
+
+Topic 10
+============================================================================================================================================================
+1:46
+sort
+
+import json
 data = {"b": 22, "a": 100, "d": 46, "c": 89, "e": 78}
 print(json.dumps(data, indent=2, sort_keys=True))
+# {
+#   "a": 1,
+#   "b": 2
+# }
 
-Output:
+with open("sorted_output.json", "w") as f:
+    json.dump(data, f, indent=2, sort_keys=True)
+
+Result=>
 
 {
   "a": 100,
   "b": 22,
   "c": 89,
-  ...
+  "d": 46,
+  "e": 78
 }
 
-Topic 11. Update & Save JSON
+Topic 11
+============================================================================================================================================================
+1:50:00
+add
+remove
+update
+Access specific values
+Update existing values
+Add new flat entries
+Remove a key if it exists (safe deletion)
+Display updated data
+Save updated data back to a file
 
-with open("output.json", "r") as f:
+
+import json
+
+# Step 1: Load JSON data from file
+with open("output.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
-# Access
-print(data["name"])
+# Step 2: Access specific values
+print("Name:", data["name"])
+print("Favorite food:", data["favorite_food"])
+# print("Microchipped:", data.get("microchipped"))  # Optional safe access
 
-# Update/Add/Remove
-data["age"] += 2
-data["favorite_food"] = "Burger"
+# Step 3: Update existing values
+data["age"] += 2  # Increment age by 2 (birthday!)
+data["favorite_food"] = "Burger"  # Update favorite food
+data["last_vet_visit"] = "2025-07-20"  # Add last vet visit date
+
+# Step 4: Add new flat entries
+data["disliked_food"] = "vegetables"
 data["daily_study_hours"] = 4
+
+# Step 5: Remove a key if it exists (safe deletion)
 data.pop("likes_water", None)
 
-# Save
-with open("output_updated.json", "w") as f:
+# Step 6: Display updated data
+print("\n🐶 Updated Dog Profile:")
+for key, value in data.items():
+    print(f"{key}: {value}")
+
+# Step 7: Save updated data back to a file
+with open("output_updated.json", "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2)
 
-Topic 12. 📊 CSV vs JSON Comparison
-Use Case	CSV	JSON
-Tabular data	✅ Yes	❌ No
-Nested/Structured data	❌ No	✅ Yes
-API communication	❌ Rare	✅ Common
-Editable in Excel	✅ Easy	❌ Hard
-Configs / Settings files	❌ No	✅ Yes
-Lightweight DB	✅ Good	✅ Good
+print("\n✅ Data successfully updated and saved to output_updated.json")
+
+Result =>
+
+{
+  "name": "frieda",
+  "is_dog": true,
+  "age": 10,
+  "color": "Brown",
+  "weight_kg": 25.4,
+  "breed": "Labrador",
+  "vaccinated": true,
+  "favorite_food": "Burger",
+  "microchipped": false,
+  "owner": "John Doe",
+  "last_vet_visit": "2025-07-20",
+  "disliked_food": "vegetables",
+  "daily_study_hours": 4
+}
+
+
+
+Topic 12:
+==========================================================================================================================================================
+
+📊 CSV vs JSON: Use Case Comparison
+Use Case			CSV		JSON
+Tabular data (rows/columns)	✅ Yes		❌ Not Ideal
+Nested or structured data	❌ No		✅ Yes
+API communication		    ❌ Rare		✅ Standard
+Editable in Excel		    ✅ Easy		❌ Hard
+Configs / settings files	❌ Not used	✅ Common
+Small databases / storage	✅ Simpler	✅ Flexible
