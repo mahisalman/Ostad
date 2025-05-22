@@ -1,0 +1,958 @@
+Class - 3
+==================================
+00:49:00
+Topic - 1
+----------------------------------
+Lecture Title: Vectors & Matrices
+1. Introduction to Vectors
+Theory:
+A vector is just a list of numbers that has both direction and magnitude.
+
+ভেক্টর হচ্ছে সংখ্যার একটি তালিকা, যা দিক (Direction) এবং মাত্রা/মান (Magnitude) — এই দুইটি বৈশিষ্ট্য ধারণ করে।
+উদাহরণ দিয়ে বুঝি:
+ধরি, একটি ভেক্টর লেখা হলো:
+v=[3,4]
+এটি ২টি সংখ্যা দিয়ে গঠিত — ৩ এবং ৪।
+এই ভেক্টরের দিক বোঝায় যে এটি কোন দিকে ইঙ্গিত করছে (যেমন, ডানদিকে ৩ ইউনিট এবং ওপরের দিকে ৪ ইউনিট)
+
+----------------------------------------------------------------
+
+ভেক্টর (Vector) এবং ম্যাট্রিক্স (Matrix)–এর বিস্তারিত বাংলা ব্যাখ্যা ও উদাহরণ দেওয়া হলো:
+🔷 ভেক্টর (Vector)
+📌 সংজ্ঞা:
+
+ভেক্টর হলো একটি সংখ্যার ক্রমানুসারে সাজানো তালিকা, যার দিক (Direction) এবং মাত্রা/মান (Magnitude) থাকে। এটি একাধিক মাত্রায় (1D, 2D, 3D) হতে পারে।
+🧪 উদাহরণ:
+✅ ১-মাত্রিক ভেক্টর (1D):
+v⃗=[5]
+v
+=[5]
+✅ ২-মাত্রিক ভেক্টর (2D):
+v⃗=[3,4]
+v
+=[3,4]
+✅ ৩-মাত্রিক ভেক্টর (3D):
+v⃗=[2,−1,6]
+v
+=[2,−1,6]
+👉 Python কোড:
+
+import numpy as np
+
+v1 = np.array([3, 4])         # 2D vector
+v2 = np.array([2, -1, 6])     # 3D vector
+
+🔶 ম্যাট্রিক্স (Matrix)
+📌 সংজ্ঞা:
+
+ম্যাট্রিক্স হচ্ছে সংখ্যার একটি আয়তাকার বিন্যাস বা টেবিল, যা সারি (rows) ও স্তম্ভ (columns) দ্বারা গঠিত।
+🧪 উদাহরণ:
+✅ ২×২ ম্যাট্রিক্স:
+A=	[1	2
+	 3	4]
+
+✅ ৩×২ ম্যাট্রিক্স:
+B=	[5	6
+	 7	8
+	 9	10]
+​
+👉 Python কোড:
+
+A = np.array([[1, 2], [3, 4]])         # 2x2 matrix
+B = np.array([[5, 6], [7, 8], [9, 10]]) # 3x2 matrix
+
+🧠 ভেক্টর বনাম ম্যাট্রিক্স পার্থক্য:
+বিষয়	ভেক্টর (Vector)	ম্যাট্রিক্স (Matrix)
+গঠন	শুধুমাত্র ১টি সারি বা ১টি স্তম্ভ	একাধিক সারি ও স্তম্ভ
+মাত্রা	1D, 2D, 3D...	2D (সারি × স্তম্ভ)
+উদাহরণ	[3,4,5][3,4,5]	[1234][13​24​]
+ব্যবহার	দিক ও গতি প্রকাশে	লিনিয়ার ট্রান্সফরমেশন, সমীকরণ সমাধানে
+📊 প্রয়োগ ক্ষেত্র:
+
+    ভেক্টর: গতি, বল, স্থানান্তর, কম্পিউটার গ্রাফিক্সে
+
+    ম্যাট্রিক্স: ছবি প্রসেসিং, লিনিয়ার সিস্টেম সমাধান, মেশিন লার্নিং
+
+-------------------------------------------------------------------------------
+
+import numpy as np
+v = np.array([3,4])
+print("Vector:", v)
+
+Result=>
+Vector: [3,4]
+
+-------------------------------------------------------------------------------
+
+00:58:31
+
+import numpy as nm
+vector_example = nm.array([7,11,56,89])
+print('Vector_example: ', vector_example)
+
+Result =>
+
+Vector_example:  [ 7 11 56 89]
+
+-------------------------------------------------------------------------------
+01:00:00
+
+vector_example = [
+    [7,11,56,89],
+    [8,9],
+    [2,4],
+    [10,4,6,9,0],
+    [1]
+]
+print('Vector_example:', vector_example)
+
+Result =>
+
+Vector_example: [[7, 11, 56, 89], [8, 9], [2, 4], [10, 4, 6, 9, 0], [1]]
+
+it is 5*n
+---------
+
+-------------------------------------------------------------------------------
+Example of 2D list
+------------------
+Dimention
+
+import numpy as np
+arr = np.array([
+    [7,11,56,89,0],
+    [8,9,0,0,0],
+    [2,4,0,0,0],
+    [10,4,6,9,0],
+    [1,0,0,0,0]
+])
+print(arr.ndim)
+
+Result =>
+2
+
+This is the example of 2 dimension
+
+-------------------------------------------------------------------------------
+Checking for Dimention
+----------------------
+01:06:00
+
+vector_example = [
+    [7,11,56,89],
+    [8,9],
+    [2,4],
+    [10,4,6,9,0],
+    [1]
+]
+
+print('Vector_example:', vector_example)
+
+print("Length of outer list:", len(vector_example))
+print("Length of each sub-list:", [len(sublist) for sublist in vector_example])
+
+arr = np.array(vector_example, dtype=object)
+print("Array shape:", arr.shape)
+
+Result =>
+
+Vector_example: [[7, 11, 56, 89], [8, 9], [2, 4], [10, 4, 6, 9, 0], [1]]
+Length of outer list: 5
+Length of each sub-list: [4, 2, 2, 5, 1]
+Array shape: (5,)
+
+----------------------------------------------
+
+vector_example = [
+    [7,11],
+    [8,9],
+    [2,4],
+    [10,4],
+    [11,2]
+]
+
+print('Vector_example:', vector_example)
+
+print("Length of outer list:", len(vector_example))
+print("Length of each sub-list:", [len(sublist) for sublist in vector_example])
+
+arr = np.array(vector_example, dtype=object)
+print("Array shape:", arr.shape)
+
+Result =>
+
+Vector_example: [[7, 11], [8, 9], [2, 4], [10, 4], [11, 2]]
+Length of outer list: 5
+Length of each sub-list: [2, 2, 2, 2, 2]
+Array shape: (5, 2)
+
+----------------------------
+
+vector_example = [
+    [7,11,2],
+    [8,9,2],
+    [2,4,2],
+    [10,4,3],
+    [11,2,5]
+]
+
+print('Vector_example:', vector_example)
+
+print("Length of outer list:", len(vector_example))
+print("Length of each sub-list:", [len(sublist) for sublist in vector_example])
+
+arr = np.array(vector_example, dtype=object)
+print("Array shape:", arr.shape)
+
+Result =>
+
+Vector_example: [[7, 11, 2], [8, 9, 2], [2, 4, 2], [10, 4, 3], [11, 2, 5]]
+Length of outer list: 5
+Length of each sub-list: [3, 3, 3, 3, 3]
+Array shape: (5, 3)
+
+=====================================================================================================================================================
+
+Topic - 2
+===========
+Vector addition and scalar multiplication
+01:27:00
+
+a = np.array([1,2])
+b = np.array([2,3])
+
+print(type(a))
+print(type(b))
+
+sum_vector = a + b
+print("Sum :", sum_vector)
+
+scaled_vector = 3 * a
+print("Scaled A :", scaled_vector)
+
+scaled_vector = 3 * b
+print("Scaled B :", scaled_vector)
+
+Result =>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Sum : [3 5]
+Scaled A : [3 6]
+Scaled B : [6 9]
+
+Because -----
+
+sum_vector = vector_p + vector_q
+
+This performs element-wise addition:
+
+[1 + 2, 2 + 3] → [3, 5]
+
+Output:
+
+Sum : [3 5]
+
+And
+
+scaled_vector = vector_p * vector_q
+
+This performs element-wise multiplication (not matrix multiplication!):
+
+[1 * 2, 2 * 3] → [2, 6]
+
+Output:
+
+Scaled : [2 6]
+-------------------------------------------------------------------------------------------------------
+
+01:30:00
+
+When the item numbers are not same,
+
+vector_p = np.array([4,7,8])
+vector_q = np.array([7887,454])
+print(type(vector_p))
+print(type(vector_q))
+sum_vector = vector_p + vector_q
+print("Sum :", sum_vector)
+scaled_vector = vector_p * vector_q
+print("Scaled :", scaled_vector)
+
+Result =>
+
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+
+ValueError                                Traceback (most recent call last)
+
+<ipython-input-34-4d13920f9274> in <cell line: 0>()
+      5 print(type(vector_q))
+      6 
+----> 7 sum_vector = vector_p + vector_q
+      8 print("Sum :", sum_vector)
+      9 
+
+ValueError: operands could not be broadcast together with shapes (3,) (2,) 
+
+-------------------------------------------------------------------------------------------------------
+01:35:00
+
+import numpy as np
+
+vector_p = np.array([4, 8, 7])
+vector_q = np.array([7887])
+
+print(type(vector_p))  # <class 'numpy.ndarray'>
+print(type(vector_q))  # <class 'numpy.ndarray'>
+
+sum_vector = vector_p + vector_q
+print("Sum :", sum_vector)
+
+multiplication_of_vector = vector_p * vector_q
+print("Scaled :", multiplication_of_vector)  # <-- Fixed this line
+
+🔍 Explanation:
+vector_p → [4, 8, 7]
+
+Shape: (3,) → a 1D vector with 3 elements
+vector_q → [7887]
+
+Shape: (1,) → a 1D vector with 1 element
+⚠️ What's happening here?
+
+Even though vector_q has only one value, NumPy broadcasts that single value across the length of vector_p:
+
+So it behaves as if you did:
+
+[4, 8, 7] + [7887, 7887, 7887] → [7891, 7895, 7894]
+[4, 8, 7] * [7887, 7887, 7887] → [31548, 63096, 55209]
+
+✅ Output:
+
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Sum : [7891 7895 7894]
+Scaled : [31548 63096 55209]
+
+=====================================================================================================================================================
+
+Topic - 3
+===========
+1:39:00
+Dot product between vectors
+Dot Product = how similar two directors are.
+
+----------------------------
+
+v1 = np.array([1,8,2])
+v2 = np.array([3,4])
+dot = np.dot(v1, v2)
+print("Dot product:", dot)
+
+Result =>
+
+ValueError                                Traceback (most recent call last)
+<ipython-input-43-fba280499316> in <cell line: 0>()
+      2 v2 = np.array([3,4])
+      3 
+----> 4 dot = np.dot(v1, v2)
+      5 print("Dot product:", dot)
+ValueError: shapes (3,) and (2,) not aligned: 3 (dim 0) != 2 (dim 0)
+
+
+------------------------------------------------------------------------------------------------------------------------------
+When Both vectors have the same size. For example:
+
+v1 = np.array([1, 8])
+v2 = np.array([3, 4])
+dot = np.dot(v1, v2)
+print("Dot product:", dot)
+
+This will compute:
+1×3+8×4=3+32=35
+
+Result =>
+---------
+Dot product: 35
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Vector VS MAtrix
+01:49:00
+
+ভেক্টর (Vector) এবং ম্যাট্রিক্স (Matrix) — এই দুটি শব্দ গণিত ও প্রোগ্রামিংয়ে অনেক গুরুত্বপূর্ণ। নিচে বাংলায় সহজভাবে এদের পার্থক্য ও উদাহরণ তুলে ধরা হলো:
+📌 ভেক্টর (Vector) কী?
+ভেক্টর হলো সংখ্যাগুলোর একটি একমাত্রিক (1D) তালিকা বা বিন্যাস।
+👉 এটা হতে পারে:
+সারি হিসেবে: [3, 5, 7]
+অথবা স্তম্ভ হিসেবে:
+    	[3
+	 5
+	 7]
+🔹 এটি একটি মাত্রা (dimension) নিয়ে কাজ করে — শুধু সারি বা শুধু স্তম্ভ।
+🧪 উদাহরণ:
+
+import numpy as np
+v = np.array([3, 5, 7])  # একটি ভেক্টর
+
+📌 ম্যাট্রিক্স (Matrix) কী?
+ম্যাট্রিক্স হলো সংখ্যাগুলোর একটি আয়তাকার দুই মাত্রার (2D) বিন্যাস, যা সারি (rows) ও স্তম্ভ (columns) দিয়ে গঠিত।
+🧪 উদাহরণ:
+A=	[1	2
+	 3	4
+	 5	6]
+
+🔹 এটি ২টি সারি ও ৩টি স্তম্ভ বিশিষ্ট একটি 2x3 ম্যাট্রিক্স।
+Python এ:
+A = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+📊 ভেক্টর বনাম ম্যাট্রিক্স:
+বৈশিষ্ট্য		ভেক্টর (Vector)	ম্যাট্রিক্স (Matrix)
+মাত্রা (Dimension)	1-মাত্রিক (1D)	2-মাত্রিক (2D)
+উপস্থাপন		একটি সারি বা স্তম্ভ	সারি ও স্তম্ভের আয়তাকার টেবিল
+উদাহরণ		[4, 7, 9]	[[1,2], [3,4], [5,6]]
+NumPy Shape	(3,)		(3, 2)
+List type	Single List	List of List
+
+🔍 সংক্ষেপে:
+    ভেক্টর = শুধুমাত্র একটি লাইন (সারি বা স্তম্ভ)
+    ম্যাট্রিক্স = সারি ও স্তম্ভে গঠিত আয়তাকার সংখ্যা বিন্যাস
+
+------------------------------------------------------------------------------------------------------------------------------
+1:52:52
+
+v1 = np.array([1,2])
+v2 = np.array([3,4,45])
+
+multi_of_v1v2 = v1 * v2
+print("Multi of v1v2:", multi_of_v1v2)
+
+Result =>
+
+ValueError                                Traceback (most recent call last)
+<ipython-input-4-22dcdc8cc122> in <cell line: 0>()
+      2 v2 = np.array([3,4,45])
+      3 
+----> 4 multi_of_v1v2 = v1 * v2
+      5 print("Multi of v1v2:", multi_of_v1v2)
+ValueError: operands could not be broadcast together with shapes (2,) (3,) 
+------------------------------------------------------------------------------------------------------------------------------
+1:54:00
+Matrix Multiplication
+
+v1 = np.array([1,2,5])
+v2 = np.array([3,4,45])
+
+m1 = np.array(
+    [
+        [1,2]
+    ]
+)
+m2 = np.array(
+    [
+        [1,2]
+    ]
+)
+multi_of_v1v2 = v1 * v2
+print("Multi of v1v2:", multi_of_v1v2)
+
+multi_of_m1m2 = m1 * m2
+print("Multi of m1m2:", multi_of_m1m2)
+
+Result =>
+Multi of v1v2: [  3   8 225]
+Multi of m1m2: [[1 4]]
+
+------------------------------------------------------------------------------------------------------------------------------
+
+m1 = np.array(
+    [
+        [1,3]
+    ]
+)
+m2 = np.array(
+    [
+        [1,2]
+    ]
+)
+
+dot = np.dot(m1, m2)
+print("Dot product:", dot)
+
+Result =>
+ValueError                                Traceback (most recent call last)
+<ipython-input-15-01a9cd4b6ffd> in <cell line: 0>()
+     13 )
+     14 
+---> 15 dot = np.dot(m1, m2)
+     16 print("Dot product:", dot)
+ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+--------------------------------------------------------------------------------------------------
+আপনার কোডে যে ValueError এসেছে, সেটা হচ্ছে matrix dot product করতে গেলে shape mismatch বা shape alignment error।
+🔍 Error ব্যাখ্যা:
+ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+এর মানে:
+    m1 এর shape: (1, 2) → ১ সারি, ২ কলাম
+    m2 এর shape: (1, 2) → ১ সারি, ২ কলাম
+Dot product বা matrix multiplication করতে হলে m1-এর কলামের সংখ্যা = m2-এর সারির সংখ্যা হওয়া লাগবে।
+❌ এখানে: 2 ≠ 1 → তাই dot product সম্ভব না।
+
+✅ সমাধান:
+আপনার যদি m2-কে সঠিকভাবে ম্যাট্রিক্স গঠন করতে হয়, তাহলে transpose করতে হবে যেন shape (2, 1) হয়।
+✔️ ঠিক করা কোড:
+import numpy as np
+m1 = np.array([[1, 3]])
+m2 = np.array([[1, 2]])
+# Transpose m2 to make dot product possible
+dot = np.dot(m1, m2.T)
+print("Dot product:", dot)
+✅ Output:
+Dot product: [[7]]
+--------------------------------------------------------------------------------------------------
+02:01:24
+Difference between dot product and mulplications
+
+Great question! In NumPy, the terms "multiplication" and "dot product" often confuse beginners because they behave differently depending on context.
+Let’s break this down in simple terms with examples and in Bangla too.
+🔹 1. Multiplication (*) — Element-wise গুণ
+👉 এটি প্রতিটি উপাদানকে একই অবস্থানের উপাদানের সাথে গুণ করে।
+✅ উদাহরণ:
+import numpy as np
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+print(a * b)
+📤 Output:
+[ 4 10 18 ]
+🔸 কারণ:
+1×4 = 4
+2×5 = 10
+3×6 = 18
+➡️ একে বলে Element-wise multiplication
+➡️ এটি matrix multiplication না, বরং প্রতিটি উপাদান আলাদাভাবে গুণ হয়।
+🔹 2. Dot Product (np.dot() / @) — গাণিতিক ডট গুণফল
+👉 এটি ভেক্টর বা ম্যাট্রিক্সের ডট প্রোডাক্ট বা ম্যাট্রিক্স মাল্টিপ্লিকেশন করে।
+✅ উদাহরণ (Vectors):
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+print(np.dot(a, b))
+📤 Output:
+32
+🔸 কারণ:
+(1×4) + (2×5) + (3×6) = 4 + 10 + 18 = 32
+➡️ একে বলে Dot Product
+➡️ এটি একটি সংখ্যা (scalar) দেয়
+✅ উদাহরণ (Matrices):
+m1 = np.array([[1, 2], [3, 4]])
+m2 = np.array([[5, 6], [7, 8]])
+print(np.dot(m1, m2))
+📤 Output:
+[[19 22]
+ [43 50]]
+🔸 এখানে m1 হল (2×2), m2-ও (2×2) — তাই dot product/ম্যাট্রিক্স গুণফল সম্ভব।
+🔁 তুলনা: Multiplication vs Dot Product
+বৈশিষ্ট্য		* (Multiplication)	np.dot() বা @ (Dot Product)
+----		------------------	-----------------------------------
+নাম		Element-wise গুণ		Dot Product / Matrix Multiplication
+প্রয়োগ হয় কিভাবে?	একই shape এর উপাদান গুনে	গণিত অনুযায়ী row × column গুনে
+আউটপুট হয় কী?	একই shape এর array	Scalar বা নতুন ম্যাট্রিক্স
+উদাহরণ		[1,2] * [3,4] → [3,8]	dot([1,2], [3,4]) → 1×3 + 2×4 = 11
+🧪 উপসংহার:
+    ✅ * → শুধু উপাদান গুণ (যদি আকার মেলে)
+    ✅ np.dot() → গণিতের মতো আসল ডট প্রোডাক্ট বা ম্যাট্রিক্স গুণ
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+02:05:33
+
+# Matrix A: 2X3
+A = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+# Matrix B: 3X2
+B = np.array([
+    [7, 8],
+    [9, 10],
+    [11, 12]
+])
+
+# Matrix Mulplication (dot product of matrices)
+result = np.dot(A, B)
+print("Matrix A:")
+print(A)
+print("\nMatrix B:")
+print(B)
+print("\nMatrix Multiplication Result:\n", result)
+
+Result=>
+--------
+
+Matrix A:
+[[1 2 3]
+ [4 5 6]]
+
+Matrix B:
+[[ 7  8]
+ [ 9 10]
+ [11 12]]
+
+Matrix Multiplication Result:
+ [[ 58  64]
+ [139 154]]
+
+🎯 কিভাবে হিসাব হলো:
+Result[0][0]=1×7+2×9+3×11=7+18+33=58
+Result[0][1]=1×8+2×10+3×12=8+20+36=64
+Result[1][0]=4×7+5×9+6×11=28+45+66=139
+Result[1][1]=4×8+5×10+6×12=32+50+72=154
+----------------------------------------------------------------------------------------------------------------------------------------------
+02:13:25
+
+# Matrix A: 2X3
+A = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+# Matrix B: 3X2
+B = np.array([
+    [7, 8],
+    [9, 10],
+    [11, 12]
+])
+
+# Matrix Mulplication (dot product of matrices)
+matrix_multiplication_result = A * B
+print("Result:\n", matrix_multiplication_result)
+
+matrix_dot_result = np.dot(A, B)
+print("Result:\n", matrix_dot_result)
+
+Result=>
+
+ValueError                                Traceback (most recent call last)
+<ipython-input-19-c960c17e26fa> in <cell line: 0>()
+     13 
+     14 # Matrix Mulplication (dot product of matrices)
+---> 15 matrix_multiplication_result = A * B
+     16 print("Result:\n", matrix_multiplication_result)
+     17 
+ValueError: operands could not be broadcast together with shapes (2,3) (3,2) 
+
+এখানে আপনি * ব্যবহার করছেন, যা element-wise multiplication করতে চায়, কিন্তু A এবং B এর shape এক নয়:
+    A.shape = (2, 3)
+    B.shape = (3, 2)
+⚠️ তাই A * B চালাতে গেলে এই ভুল আসবে:
+ValueError: operands could not be broadcast together with shapes (2,3) (3,2)
+
+📊 উপসংহার:
+অপারেশন		ব্যাখ্যা			Valid	ব্যাখ্যা
+A * B		Element-wise গুণ		❌	আকার মেলে না
+np.dot(A, B)	Matrix multiplication	✅	A(2x3) × B(3x2) → (2x2)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+02:23:00
+
+vector_matrix_example_a = [
+    [7,11,56,89],
+    [8,9],
+    [2,4],
+    [10,4,6,9,0],
+    [1]
+]
+
+vector_matrix_example_b = [
+    [7,11,56,89],
+    [8,9],
+    [2,4],
+    [10,4,6,9,0],
+    [1]
+]
+
+print(vector_matrix_example_a + vector_matrix_example_b)
+
+Result =>
+
+[[7, 11, 56, 89], [8, 9], [2, 4], [10, 4, 6, 9, 0], [1], [7, 11, 56, 89], [8, 9], [2, 4], [10, 4, 6, 9, 0], [1]]
+
+print(vector_matrix_example_a * vector_matrix_example_b)
+
+Result = >
+
+---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+<ipython-input-21-9f2aae896ca2> in <cell line: 0>()
+----> 1 print(vector_matrix_example_a * vector_matrix_example_b)
+TypeError: can't multiply sequence by non-int of type 'list'
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+02:30:00
+
+vector_example = [
+    [7,11,56,89],
+    [8,9],
+    [2,4],
+    [10,4,6,9,0],
+    [1]
+]
+
+arr = np.array(vector_example, dtype=object)
+print("Array shape:", arr.shape)
+print(arr)
+
+print(vector_example)
+shape_of_vector_example = np.array(vector_example)
+print(shape_of_vector_example)
+
+Result =>
+
+Array shape: (5,)
+[list([7, 11, 56, 89]) list([8, 9]) list([2, 4]) list([10, 4, 6, 9, 0])
+ list([1])]
+[[7, 11, 56, 89], [8, 9], [2, 4], [10, 4, 6, 9, 0], [1]]
+
+---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+<ipython-input-23-d9eefd80ca55> in <cell line: 0>()
+     12 
+     13 print(vector_example)
+---> 14 shape_of_vector_example = np.array(vector_example)
+     15 print(shape_of_vector_example)
+
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (5,) + inhomogeneous part.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+আপনার কোডটি জটিল nested list ব্যবহার করছে যেখানে প্রতিটি উপ-তালিকার দৈর্ঘ্য সমান নয় — একে বলে ragged array বা inhomogeneous list। নিচে ব্যাখ্যা সহ ফলাফল দেওয়া হলো:
+🔸 কোড ব্যাখ্যা:
+vector_example = [
+    [7,11,56,89],
+    [8,9],
+    [2,4],
+    [10,4,6,9,0],
+    [1]
+]
+arr = np.array(vector_example, dtype=object)
+print("Array shape:", arr.shape)
+print(arr)
+print(vector_example)
+shape_of_vector_example = np.array(vector_example)
+print(shape_of_vector_example)
+
+🧠 কী হচ্ছে এখানে:
+✅ ১. np.array(vector_example, dtype=object):
+এখানে আপনি dtype=object দিয়েছেন, তাই NumPy বুঝে গেছে প্রতিটি উপ-তালিকা আলাদা দৈর্ঘ্যের — এবং এটাকে একটি 1D object array বানিয়েছে:
+Array shape: (5,)
+🔸 অর্থাৎ এটি একটি 1D array, যার প্রতিটি উপাদান একটি Python list।
+⚠️ ২. np.array(vector_example) (without dtype=object):
+এখানে NumPy চেষ্টা করে একটি regular array বানাতে। কিন্তু যেহেতু উপ-তালিকাগুলোর দৈর্ঘ্য ভিন্ন, তাই NumPy fallback করে object array-তে এবং warning দেখাতে পারে।
+✅ Output (সঠিকভাবে):
+Array shape: (5,)
+[list of variable lengths...]
+প্রতিটি উপাদান আসলে একেকটা list:
+    [7,11,56,89]
+    [8,9]
+    ...
+📌 উপসংহার:
+প্রশ্ন					উত্তর
+vector_example কি 2D array?		❌ না, কারণ প্রতিটি row-এর size এক না
+এর shape কী?				(5,) — অর্থাৎ ৫টি উপাদান বিশিষ্ট ১-মাত্রিক object array
+কীভাবে এটা সমান দৈর্ঘ্যের 2D array বানানো যায়?		সকল row এর দৈর্ঘ্য সমান করতে হবে
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+A = np.array([1, 2, 3])
+B = np.array([4, 5])
+print(A + B)  # This will raise an error
+
+Result =>
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[2], line 3
+      1 A = np.array([1, 2, 3])
+      2 B = np.array([4, 5])
+----> 3 print(A + B)  # This will raise an error
+
+ValueError: operands could not be broadcast together with shapes (3,) (2,) 
+
+>তুমি যদি ৩টা আম নাও আর আমি ২টা, তাহলে প্রতিটির সঙ্গে জোড়া করা যাবে না।
+Explanation:
+Each position in one vector must match a position in the other to add. No extra or missing values allowed.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6, 7]])
+print(A + B)  # Error due to shape mismatch
+
+Result =>
+
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[4], line 3
+      1 A = np.array([[1, 2], [3, 4]])
+      2 B = np.array([[5, 6, 7]])
+----> 3 print(A + B)  # Error due to shape mismatch
+
+ValueError: operands could not be broadcast together with shapes (2,2) (1,3) 
+
+>যদি দুটি ক্লাসের রোল নম্বর তালিকার রো এবং কলাম না মিলে, তাহলে একসাথে যোগ করা যাবে না।
+Explanation:
+Matrix addition is element-wise: each cell in one matrix must match with a cell in the same position in the other.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+A = np.array([1, 2, 3])
+B = np.array([4, 5])
+print(A * B)  # Error
+
+Result =>
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-29-f7fb88083e98> in <cell line: 0>()
+      1 A = np.array([1, 2, 3])
+      2 B = np.array([4, 5])
+----> 3 print(A * B)  # Error
+ValueError: operands could not be broadcast together with shapes (3,) (2,) 
+
+যদি তোমার আর আমার তিন দিন করে কাজ থাকে, কিন্তু একজনের দুই দিনই কাজ থাকে, তাহলে প্রতিদিন গুণ করে হিসাব করা যাবে না।
+📘 Explanation:
+This is just like multiplying matching values in two lists. If one list is shorter, there's no match for the extra values.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+## ✅ 4. Matrix Element-wise Multiplication :
+
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6, 7]])
+print(A * B)  # Error
+
+Result =>
+
+ValueError                                Traceback (most recent call last)
+<ipython-input-32-0bd9cd52b368> in <cell line: 0>()
+      1 A = np.array([[1, 2], [3, 4]])
+      2 B = np.array([[5, 6, 7]])
+----> 3 print(A * B)  # Error
+ValueError: operands could not be broadcast together with shapes (2,2) (1,3) 
+
+>যদি একজন ছাত্র দুটি বিষয়ে নম্বর পায় আর আরেকজন তিনটিতে দেয়, তাহলে একসাথে গুণ করা সম্ভব নয়।
+Explanation:
+Each cell of one matrix must match exactly with a cell in the other. It's like multiplying each student’s score with subject weights — only possible when all subjects match.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+## ✅ 5. Dot Product of Vectors :
+Dot product requires same length vectors.
+
+A = np.array([1, 2, 3])
+B = np.array([4, 5])
+print(np.dot(A, B))  # Error
+
+Result =>
+
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-33-c55cf019d35f> in <cell line: 0>()
+      1 A = np.array([1, 2, 3])
+      2 B = np.array([4, 5])
+----> 3 print(np.dot(A, B))  # Error
+ValueError: shapes (3,) and (2,) not aligned: 3 (dim 0) != 2 (dim 0)
+
+>তুমি যদি তিনটা সিনেমা রেট করো আর আমি যদি দুটো করি, তাহলে similarity হিসাব করা যাবে না।
+Explanation:
+Dot product means multiplying matching items and then adding the results. If one vector is too short, the matching breaks.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+A = np.array([[1, 2]])
+B = np.array([[3, 4]])
+print(np.dot(A, B))  # Error
+
+Result =>
+
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-37-53e21dd76639> in <cell line: 0>()
+      1 A = np.array([[1, 2]])
+      2 B = np.array([[3, 4]])
+----> 3 print(np.dot(A, B))  # Error
+ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+
+>তুমি যদি তিনটা প্রশ্ন করো আর আমি যদি শুধু দুটো উত্তর দিই, তাহলে পুরো প্রশ্নপত্রের মূল্যায়ন সম্ভব নয়।
+Explanation:
+Matrix multiplication takes the dot product of A’s row and B’s column. They must have matching lengths.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+| **Operation**                          | **Rule You Must Follow**            | ✅ **Works When...**            | ❌ **Fails When...**                 |
+| -------------------------------------- | ----------------------------------- | ------------------------------ | ----------------------------------- |
+| **Vector Addition**                    | Vectors must be same length         | `[1, 2, 3] + [4, 5, 6]`        | `[1, 2, 3] + [4, 5]`                |
+| **Matrix Addition**                    | Same shape: rows and columns        | `2x2 + 2x2`                    | `2x2 + 1x3`                         |
+| **Vector Element-wise Multiplication** | Same length                         | `[1, 2, 3] * [4, 5, 6]`        | `[1, 2, 3] * [4, 5]`                |
+| **Matrix Element-wise Multiplication** | Same shape                          | `2x2 * 2x2`                    | `2x2 * 1x3`                         |
+| **Vector Dot Product**                 | Vectors must be same length         | `np.dot([1, 2, 3], [4, 5, 6])` | `np.dot([1, 2, 3], [4, 5])`         |
+| **Matrix Multiplication**              | Columns in A = Rows in B            | `np.dot(2x3, 3x2)`             | `np.dot(2x2, 1x2)`                  |
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+a = np.array([4, 5, 6])
+b = np.array([7, 8])
+
+b_padded = np.pad(b, (0, len(a) - len(b)), constant_values=0)
+print(a + b_padded)
+
+Result =>
+
+[11 13  6]
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+min_len = min(len(a), len(b))
+print(a[:min_len] + b[:min_len])
+
+Result =>
+
+[11 13]
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+## 🔧 2. Matrix Addition or Element-wise Multiplication – Shape Mismatch
+
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6, 7]])
+A + B  # ValueError
+
+Result =>
+
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[14], line 3
+      1 A = np.array([[1, 2], [3, 4]])
+      2 B = np.array([[5, 6, 7]])
+----> 3 A + B  # ValueError
+
+ValueError: operands could not be broadcast together with shapes (2,2) (1,3) 
+
+### ✅ Fix Option(s):
+
+def pad_matrix(mat, target_shape, pad_value=0):
+    padded = np.full(target_shape, pad_value)
+    padded[:mat.shape[0], :mat.shape[1]] = mat
+    return padded
+
+A_fixed = pad_matrix(A, (2, 3))
+B_fixed = pad_matrix(B, (2, 3))
+print(A_fixed + B_fixed)
+
+Result =>
+
+[[6 8 7]
+ [3 4 0]]
+----------------------------------------------------------------------------------------------------------------------------------------------
