@@ -1,10 +1,7 @@
-# 🚀 Git Commands Cheat Sheet with Examples
+🚀 Git Commands Cheat Sheet with Examples
 
----
+🔧 Setup & Configuration
 
-## 🔧 Setup & Configuration
-
-```bash
 # Set global username
 $ git config --global user.name "John Doe"
 
@@ -13,25 +10,17 @@ $ git config --global user.email "john@example.com"
 
 # List all Git config settings
 $ git config --list
-```
 
----
+📁 Repository Management
 
-## 📁 Repository Management
-
-```bash
 # Initialize a new Git repository
 $ git init
 
 # Clone a repository
 $ git clone https://github.com/user/repo.git
-```
 
----
+📦 Staging & Committing Changes
 
-## 📦 Staging & Committing Changes
-
-```bash
 # Check the status of files
 $ git status
 
@@ -46,13 +35,9 @@ $ git commit -m "Initial commit"
 
 # Add & commit tracked files in one command
 $ git commit -am "Update content"
-```
 
----
+🌱 Branching & Merging
 
-## 🌱 Branching & Merging
-
-```bash
 # List branches
 $ git branch
 
@@ -70,13 +55,9 @@ $ git merge feature-xyz
 
 # Delete a branch
 $ git branch -d feature-xyz
-```
 
----
+🔄 Remote Repositories
 
-## 🔄 Remote Repositories
-
-```bash
 # View remotes
 $ git remote -v
 
@@ -94,13 +75,9 @@ $ git push
 
 # Push and set upstream tracking
 $ git push -u origin main
-```
 
----
+🕰️ View History & Differences
 
-## 🕰️ View History & Differences
-
-```bash
 # Show commit history
 $ git log
 
@@ -115,13 +92,9 @@ $ git diff
 
 # Show staged changes
 $ git diff --staged
-```
 
----
+⏪ Undo / Revert / Reset
 
-## ⏪ Undo / Revert / Reset
-
-```bash
 # Revert a commit (creates a new commit that undoes changes)
 $ git revert abc1234
 
@@ -139,13 +112,9 @@ $ git restore file.txt
 
 # Unstage a file without discarding changes
 $ git restore --staged file.txt
-```
 
----
+🧪 Stashing (Temporary Save)
 
-## 🧪 Stashing (Temporary Save)
-
-```bash
 # Stash changes
 $ git stash
 
@@ -157,25 +126,17 @@ $ git stash apply
 
 # Drop last stash
 $ git stash drop
-```
 
----
+🔍 Inspect & Search
 
-## 🔍 Inspect & Search
-
-```bash
 # Search for text in files
 $ git grep "function"
 
 # Show who changed each line in a file
 $ git blame main.py
-```
 
----
+🔖 Tags
 
-## 🔖 Tags
-
-```bash
 # List tags
 $ git tag
 
@@ -187,13 +148,8 @@ $ git push origin v1.0
 
 # Push all tags
 $ git push origin --tags
-```
 
----
-
-✅ **Tip:** Always double-check before using `git reset --hard`, as it will remove changes permanently!
-
-
+✅ Tip: Always double-check before using git reset --hard, as it will remove changes permanently!
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Class - 5
