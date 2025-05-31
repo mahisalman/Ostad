@@ -1,3 +1,197 @@
+# 🚀 Git Commands Cheat Sheet with Examples
+
+---
+
+## 🔧 Setup & Configuration
+
+```bash
+# Set global username
+$ git config --global user.name "John Doe"
+
+# Set global email
+$ git config --global user.email "john@example.com"
+
+# List all Git config settings
+$ git config --list
+```
+
+---
+
+## 📁 Repository Management
+
+```bash
+# Initialize a new Git repository
+$ git init
+
+# Clone a repository
+$ git clone https://github.com/user/repo.git
+```
+
+---
+
+## 📦 Staging & Committing Changes
+
+```bash
+# Check the status of files
+$ git status
+
+# Add a specific file to staging
+$ git add index.html
+
+# Add all files to staging
+$ git add .
+
+# Commit changes with a message
+$ git commit -m "Initial commit"
+
+# Add & commit tracked files in one command
+$ git commit -am "Update content"
+```
+
+---
+
+## 🌱 Branching & Merging
+
+```bash
+# List branches
+$ git branch
+
+# Create a new branch
+$ git branch feature-xyz
+
+# Switch to a branch
+$ git checkout feature-xyz
+
+# Create and switch in one step
+$ git checkout -b new-feature
+
+# Merge a branch into the current one
+$ git merge feature-xyz
+
+# Delete a branch
+$ git branch -d feature-xyz
+```
+
+---
+
+## 🔄 Remote Repositories
+
+```bash
+# View remotes
+$ git remote -v
+
+# Add a remote
+$ git remote add origin https://github.com/user/repo.git
+
+# Fetch changes from remote
+$ git fetch
+
+# Pull changes from remote
+$ git pull
+
+# Push changes to remote
+$ git push
+
+# Push and set upstream tracking
+$ git push -u origin main
+```
+
+---
+
+## 🕰️ View History & Differences
+
+```bash
+# Show commit history
+$ git log
+
+# Compact one-line log
+$ git log --oneline
+
+# Show details of a specific commit
+$ git show abc1234
+
+# Show unstaged changes
+$ git diff
+
+# Show staged changes
+$ git diff --staged
+```
+
+---
+
+## ⏪ Undo / Revert / Reset
+
+```bash
+# Revert a commit (creates a new commit that undoes changes)
+$ git revert abc1234
+
+# Reset to a previous commit, keep changes staged
+$ git reset --soft abc1234
+
+# Reset and unstage changes
+$ git reset --mixed abc1234
+
+# Hard reset: discard all changes
+$ git reset --hard abc1234
+
+# Restore a file to last committed version
+$ git restore file.txt
+
+# Unstage a file without discarding changes
+$ git restore --staged file.txt
+```
+
+---
+
+## 🧪 Stashing (Temporary Save)
+
+```bash
+# Stash changes
+$ git stash
+
+# View stashes
+$ git stash list
+
+# Apply last stash
+$ git stash apply
+
+# Drop last stash
+$ git stash drop
+```
+
+---
+
+## 🔍 Inspect & Search
+
+```bash
+# Search for text in files
+$ git grep "function"
+
+# Show who changed each line in a file
+$ git blame main.py
+```
+
+---
+
+## 🔖 Tags
+
+```bash
+# List tags
+$ git tag
+
+# Create a tag
+$ git tag v1.0
+
+# Push a tag
+$ git push origin v1.0
+
+# Push all tags
+$ git push origin --tags
+```
+
+---
+
+✅ **Tip:** Always double-check before using `git reset --hard`, as it will remove changes permanently!
 
 
 
