@@ -1,0 +1,799 @@
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Class - 5
+---------
+=========
+========================================================================================================================================================
+🎓 Lecture: Git, GitHub
+১. Git কী এবং কখন ব্যবহার করব?
+
+❓ Git কী?
+Git হল একটি ধরনের version control system — যেটা মূলত আপনি যদি একটি প্রজেক্টে কোড করেন, তাহলে Git সেই প্রজেক্টের প্রতিটি পরিবর্তনের ইতিহাস রাখবে।
+উদাহরণ: ভাবুন, আপনি একটি গল্পের বই লিখছেন। প্রতিদিন কিছু না কিছু লিখছেন। আপনি চাইলে পুরোনো লেখা খুঁজে বের করে দেখতে পারবেন। তাহলে প্রতিদিন একটি কপি করে রাখলেন। Git এই কাজটিই স্বয়ংক্রিয়ভাবে করে।
+
+✅ কেন Git ব্যবহার করবেন?
+পরিবর্তনের ইতিহাস পাওয়া যায়
+দলগতভাবে কাজ করা সহজ হয়
+পুরোনো ভার্সনে ফিরে যাওয়া যায়
+নতুন ফিচার আলাদাভাবে পরীক্ষা করা যায় (branch)
+Git = আপনার প্রজেক্টের টাইম ট্রাভেলিং সিস্টেম!
+
+২. ভার্সন কন্ট্রোল কী?
+সহজ ভাষায়: Version control system হল এমন একটি সফটওয়্যার যা প্রতিটি ফাইল কখন, কে, কী পরিবর্তন করেছে — এই ইতিহাস রাখে।
+উদাহরণ: ভাবুন আপনি আপনার ঘর সাজালেন। প্রতিদিন একটু করে কিছু যোগ করলেন। হঠাৎ একদিন মনে হল আগের অবস্থাই ভালো ছিল। যদি আপনি প্রতিদিন ছবি তুলতেন, তাহলে আগের অবস্থায় ফিরে যাওয়া সহজ হতো। Git ঠিক এইরকম টাইম ট্রাভেলিংয়ের জন্য।
+
+৩. সাধারণ Git কমান্ডসমূহ
+কমান্ড			কাজ
+git init		প্রজেক্টে git চালু করা
+git add file.py		নির্দিষ্ট ফাইল স্টেজে আনা
+git commit -m "msg"	পরিবর্তন সংরক্ষণ করা
+git status		কী কী পরিবর্তন হয়েছে দেখা
+git log			পুরোনো commit এর ইতিহাস দেখা
+
+উদাহরণ: ধরুন আপনি একটি ডকুমেন্ট লিখছেন। প্রতিদিন কিছু লিখে সেভ করছেন। git commit সেই সেভ করার মতো।
+
+৪. GitHub কী এবং কীভাবে কাজ করে?
+❓ GitHub কী?
+GitHub হল Git প্রজেক্টের ক্লাউড হোস্টিং ওয়েবসাইট। এখানে Git-এ করা কোডগুলো ইন্টারনেটের মাধ্যমে সংরক্ষণ করে রাখা হয়।
+উদাহরণ: আপনার মেমোরি (Git) আর Google Photos (GitHub)। তখন অন্য মেম্বাররাও একসাথে কাজ করতে পারে।
+
+৫. GitHub-এ রিপোজিটরি তৈরি ও ব্যবস্থাপনা
+ধাপসমূহ:
+https://github.com এ যান
+“New Repository” ক্লিক করুন
+নাম দিন, README সিলেক্ট করে তৈরি করুন
+Git কমান্ড দিয়ে যুক্ত করুন:
+git remote add origin https://github.com/username/repo.git
+git push -u origin main
+রিপোজিটরি = প্রজেক্টের পাবলিক হোম
+
+৬. কোড ক্লোন ও পুশ করা
+ক্লোন করা:
+git clone https://github.com/username/repo.git
+পুশ করা:
+git add .
+git commit -m "my update"
+git push origin main
+
+৭. Branch ও Merge এর সহজ ধারণা
+Branching:
+মূল রাস্তায় কাজ না করে — একটি নতুন রাস্তায় (branch) এক্সপেরিমেন্ট করতে পারেন।
+git branch feature-1
+git checkout feature-1
+
+Merging:
+git checkout main
+git merge feature-1
+
+উদাহরণ:ধরুন আপনি একটি নতুন ফিচার ট্রাই করলেন (branch), ভালো লাগলে সেটিকে মূল কোডে যুক্ত করবেন (merge)।
+
+৮. একটি আদর্শ প্রজেক্ট ফোল্ডার স্ট্রাকচার
+myproject/
+│
+├── src/               # মূল সোর্স কোড
+├── tests/             # টেস্ট ফাইল
+├── docs/              # ডকুমেন্টেশন
+├── data/              # ডেটা ফাইল
+├── scripts/           # সহায়ক স্ক্রিপ্ট
+├── README.md          # প্রজেক্টের সংক্ষিপ্ত বিবরণ
+├── .gitignore         # কোন ফাইল Git এ রাখা হবে না
+├── requirements.txt   # কোন কোন লাইব্রেরি দরকার
+
+৯. কোডবেস সংগঠনের সেরা প্র্যাকটিস
+✅ করণীয়:
+ফোল্ডারগুলো পরিষ্কার রাখুন
+সঠিক কমিট মেসেজ দিন
+.gitignore ব্যবহার করুন
+README.md দিয়ে প্রজেক্ট বুঝিয়ে দিন
+main ব্রাঞ্চ আলাদাভাবে রাখুন
+
+❌ যা করবেন না:
+বড় ডেটা ফাইল Git-এ রাখবেন না
+ভুল কমিট বারবার করবেন না
+বারবার force push করবেন না
+
+✅ সারাংশ
+বিষয়			সারাংশ
+Git			সোর্স কোড পরিবর্তনের ইতিহাস রাখা হয়
+GitHub			Git এর ক্লাউড সাপোর্ট
+Git কমান্ড			init, add, commit, push, branch, merge
+Version Control		কোডের ইতিহাস ট্র্যাক এবং রোলব্যাক করা যায়
+ফোল্ডার স্ট্রাকচার		পরিষ্কার ও সংগঠিত রাখার নিয়ম
+Best Practices		ক্লিন কোড, ডকুমেন্টেশন, কমিট ডিসিপ্লিন
+
+===================================================================================================================================================
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===================================================================================================================================================
+
+Topic - 1
+=========
+What is Git and why use it
+Understanding version control
+==========================
+Lecture: Git, GitHub
+
+🌿 Git কী এবং কেন ব্যবহার করব?
+🔍 Git কী?
+
+Git হলো একটি Version Control System (VCS) — অর্থাৎ, আপনি যখন কোনো প্রজেক্টে কাজ করেন, তখন Git সেই প্রজেক্টের প্রতিটি পরিবর্তনের স্বয়ংক্রিয়ভাবে হিসাব রাখে।
+📘 উদাহরণ:
+ধরুন, আপনি একটি গল্পের বই লিখছেন। প্রতিদিন কিছু না কিছু নতুন যোগ করছেন। আপনি নিশ্চয়ই চাইবেন আগের লেখা হারিয়ে না যাক, তাই প্রতিদিন একটি করে কপি সংরক্ষণ করেন।
+Git এই কাজটি আপনার হয়ে করে — আগের সব লেখা সংরক্ষণ করে রাখে, যাতে আপনি যেকোনো সময় পেছনে ফিরে যেতে পারেন।
+
+❓ কেন Git ব্যবহার করবেন?
+✅ পরিবর্তনের ইতিহাস রাখা যায়
+প্রজেক্টের কোন ফাইলে কখন কী পরিবর্তন হয়েছে, তা সব সময় ট্র্যাক করা যায়।
+✅ দলগতভাবে কাজ করা সহজ
+একাধিক মানুষ একসঙ্গে একই প্রজেক্টে কাজ করতে পারে, তবুও কেউ কারো কাজের সঙ্গে সংঘর্ষে না পড়ে।
+✅ পুরনো ভার্সনে ফিরে যাওয়া যায়
+কোনো সমস্যা হলে আগের কোনো স্থিতিশীল অবস্থায় ফিরে যাওয়া যায় খুব সহজেই।
+✅ নতুন ফিচার আলাদাভাবে পরীক্ষা করা যায়
+Branch ব্যবহার করে মূল প্রজেক্টে না ছুঁয়ে নতুন ফিচার ডেভেলপ ও পরীক্ষা করা যায়।
+
+💡 Git আপনার প্রজেক্টের একটি টাইম ট্রাভেল মেশিনের মতো — যেটা দিয়ে আপনি অতীতে ফিরে যেতে পারেন, পরিবর্তনের হিসাব রাখতে পারেন, আর দলবদ্ধভাবে নিখুঁতভাবে কাজ করতে পারেন।
+------------------------------------------------------------------------------------------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------------------------------------------------------------------------------------
+২. ভার্সন কন্ট্রোল কী?
+সহজ ভাষায়:
+Version control system হলো, যখন একটি সফটওয়্যারের বা প্রতিটি ফাইলের কে, কখন, কী পরিবর্তন করেছে — এই হিসাব রাখে।
+
+উদাহরণ:
+ধরুন আপনি আপনার থিস্যাস সাজাচ্ছেন। আপনি প্রতিদিন নতুন কিছু যোগ করছেন। হঠাৎ একদিন মনে হলো সামনের সাজানোটা ভালো ছিল। যদি বুঝি খুব প্রয়োজন প্রতিদিন, তাহলে আগের অবস্থায় ফিরে যাওয়া যেত। Git ঠিক এই রকম ঝুঁকিগুলো প্রতিদিন কভারেড।
+
+"ভার্সন কন্ট্রোল" সম্পর্কে সহজ ভাষায় বিস্তারিত ব্যাখ্যা দেওয়া হলো, যেন যেকোনো নতুন ব্যবহারকারীও সহজে বুঝতে পারে:
+📌 ভার্সন কন্ট্রোল কী?
+সহজ ভাষায়:
+
+Version Control System (VCS) এমন একটি পদ্ধতি বা সফটওয়্যার, যা আপনার ফাইল বা প্রজেক্টে কে, কখন, কী পরিবর্তন এনেছে — সেই ইতিহাস সংরক্ষণ করে রাখে।
+
+এটি মূলত একটি পরিবর্তনের ডায়েরি — যেখানে প্রতিটি ফাইলের প্রতিটি পরিবর্তনের সময়, তারিখ, এবং সেই পরিবর্তন কে করেছে, সবকিছু লেখা থাকে।
+🎓 উদাহরণ দিয়ে বোঝা যাক:
+
+ধরুন, আপনি একটি থিসিস বা গবেষণাপত্র লিখছেন। প্রতিদিন কিছু না কিছু পরিবর্তন করছেন — কোথাও লেখার স্টাইল পাল্টাচ্ছেন, কোথাও নতুন প্যারাগ্রাফ যোগ করছেন।
+
+একদিন আপনার মনে হলো, আগের দিনের লেখা বা ফর্ম্যাটিংটা আসলে বেশি ভালো ছিল। তখন আপনি যদি পুরনো ভার্সনটা ফিরে পেতেন, তাহলে সেটাকেই রেখে দিতেন।
+
+Version Control আপনাকে এই কাজটাই করতে দেয়। আপনি চাইলে:
+
+    পুরনো কোনো নির্দিষ্ট দিনের সংস্করণে ফিরে যেতে পারেন,
+
+    দেখে নিতে পারেন, কে কী পরিবর্তন করেছিল (যদি টিমে কাজ করেন),
+
+    ভুল করে কিছু মুছে ফেললেও সহজে আগের অবস্থায় ফিরিয়ে আনতে পারেন।
+
+🔧 ভার্সন কন্ট্রোল ব্যবহারের সুবিধা:
+সুবিধা	বিস্তারিত
+📜 ইতিহাস সংরক্ষণ	আপনি সব সময় জানতে পারবেন, কোন ফাইল কবে কীভাবে বদলেছে।
+👨‍👩‍👧 দলগত কাজের সুবিধা	একাধিক ডেভেলপার একসাথে কাজ করলেও কারো কাজ কারো সঙ্গে সংঘর্ষে পড়ে না।
+⏪ আগের অবস্থায় ফিরে যাওয়া	ভুল হয়ে গেলে আগের ভার্সনে ফিরতে পারেন।
+🧪 ফিচার পরীক্ষার স্বাধীনতা	নতুন ফিচার আলাদা branch-এ বানিয়ে পরীক্ষা করতে পারেন। মূল প্রজেক্ট নিরাপদ থাকে।
+🛠️ ভার্সন কন্ট্রোল কীভাবে কাজ করে?
+
+ভার্সন কন্ট্রোল সাধারণত দুইভাবে কাজ করে:
+
+    Local Version Control: শুধু আপনার কম্পিউটারে থাকে।
+
+    Distributed Version Control (যেমন Git): প্রতিটি ব্যবহারকারীর কাছে পুরো প্রজেক্টের ইতিহাস থাকে। ইন্টারনেট ছাড়াও কাজ করা যায়।
+
+🔍 ভার্সন কন্ট্রোল মানেই শুধু কোডিং নয়!
+
+অনেকেই ভাবেন Version Control কেবল প্রোগ্রামিং বা সফটওয়্যার ডেভেলপমেন্টের জন্য।
+আসলে না — এটি ডিজাইন, লেখালেখি, কনটেন্ট ম্যানেজমেন্ট সহ যেকোনো ক্ষেত্রেই কার্যকর। যেখানে নিয়মিত পরিবর্তন হয়, সেখানেই ভার্সন কন্ট্রোল উপকারী।
+📌 সংক্ষেপে বললে:
+
+ভার্সন কন্ট্রোল হলো আপনার প্রজেক্টের জন্য একটি “স্মার্ট টাইম মেশিন” — যা শুধু সময়েই ফিরিয়ে নেয় না, বরং বলে দেয় কে কবে কোন দিকটা পরিবর্তন করেছিল, এবং সেই পরিবর্তন দরকার ছিল কি না।
+---------------------------------------------------------------------------------------------------------------------------------
+
+Topic - 2
+=========
+Basic Git commands: init, add, commit
+=====================================
+01:00:00
+
+At the TERMINAL of VS CODE
+--------------------------
+PS C:\Users\MAHI-IT> git -v
+git version 2.49.0.windows.1
+PS C:\Users\MAHI-IT> git -version
+unknown option: -version
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]    
+           <command> [<args>]
+PS C:\Users\MAHI-IT> 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+At GIT BASH
+
+
+MAHI-IT@MAHI-IT MINGW64 ~ (master)
+$ git -v
+git version 2.49.0.windows.1
+
+MAHI-IT@MAHI-IT MINGW64 ~ (master)
+$ git -version
+unknown option: -version
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy
+-fetch]
+           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]
+           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envva
+r>]
+           <command> [<args>]
+
+MAHI-IT@MAHI-IT MINGW64 ~ (master)
+$ git --version
+git version 2.49.0.windows.1
+
+MAHI-IT@MAHI-IT MINGW64 ~ (master)
+$
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+PS C:\Users\MAHI-IT> python --version
+Python 3.13.3
+PS C:\Users\MAHI-IT> git --version
+git version 2.49.0.windows.1
+---------------------------------------------------------------------------------------------------------------------------------------------------
+01:04:07
+
+PS C:\Users\MAHI-IT> git init
+Reinitialized existing Git repository in C:/Users/MAHI-IT/.git/
+---------------------------------------------------------------------------------------------------------------------------------------------------
+creating a physical folder
+sample.py
+code-
+a = 7
+b = 8
+print(a+b)
+Result =>
+PS D:\Ustad\Git> python .\sample.py
+15
+---------------------------------------------------------------------------------------------------------------------------------------------------
+multiplication.py
+c = 3
+d = 12
+print(c * d)
+Result->
+
+PS D:\Ustad\Git> python .\multiplication.py
+36
+---------------------------------------------------------------------------------------------------------------------------------------------------
+git init
+Helps on - Total project initialization
+---------------------------------------------------------------------------------------------------------------------------------------------------
+1:12:04
+Git - Command - ADD
+===================
+
+git add sample.py
+
+-> symbol changed from "U" to "A"
+U - Untracked
+A - Added
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Git - Command - Commit
+======================
+PS D:\Ustad\Git> git commit -m "This python code is simply add two variables"
+
+[master (root-commit) 57c3c96] This python code is simply add two variables
+ 1 file changed, 5 insertions(+)
+ create mode 100644 sample.py   
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+PS D:\Ustad\Git> git add multiplication.py
+
+PS D:\Ustad\Git> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   multiplication.py
+
+PS D:\Ustad\Git> git commit -m 'This python file is used to multiply two numbers'
+[master beaf204] This python file is used to multiply two numbers
+ 1 file changed, 6 insertions(+)
+ create mode 100644 multiplication.py
+
+PS D:\Ustad\Git> git status
+On branch master
+nothing to commit, working tree clean
+
+PS D:\Ustad\Git> git log
+commit beaf2043b9edfb0d2e92508958cff9a2357f4c57 (HEAD -> master)
+Author: mahisalman <mahi.salman@gmail.com>
+Date:   Mon May 26 15:06:17 2025 +0600
+
+    This python file is used to multiply two numbers
+
+commit 57c3c969b464897f1b43effd688e3237fefb8de3
+Author: mahisalman <mahi.salman@gmail.com>
+Date:   Mon May 26 15:02:08 2025 +0600
+
+    This python code is simply add two variables
+---------------------------------------------------------------------------------------------------------------------------------------------------
+01:21:40
+
+GIT INIT
+GIT ADD
+GIT COMMIT
+GIT STATUS
+GIT LOG
+---------------------------------------------------------------------------------------------------------------------------------------------------
+01:27:00
+
+After midification
+
+a = 7
+b = 8
+e = 9
+print(a+b+e)
+& ---------------------------
+c = 3
+d = 12
+f = 5
+print(c * d * f)
+---------------------------
+PS D:\Ustad\Git> python .\sample.py
+24
+PS D:\Ustad\Git> git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sample.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+& ---------------------------
+ PS D:\Ustad\Git> python .\multiplication.py
+180
+PS D:\Ustad\Git> git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   multiplication.py
+        modified:   sample.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+----------------------------------------------------------
+
+PS D:\Ustad\Git> git add sample.py
+PS D:\Ustad\Git> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   sample.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   multiplication.py
+
+PS D:\Ustad\Git> git commit -m 'added anothr interger value to add'
+[master 39c96f2] added anothr interger value to add
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+====================================================================================================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Topic 2 = same things in different way
+======================================
+
+🧭 Topic 2: Basic Git Commands — init, add, commit
+
+🕒 Duration: 01:00:00 – 01:40:05
+🔧 Environment: VS Code Terminal & Git Bash
+🚀 Checking Git Version
+🖥️ VS Code Terminal
+
+PS C:\Users\MAHI-IT> git -v
+git version 2.49.0.windows.1
+
+PS C:\Users\MAHI-IT> git -version
+unknown option: -version
+usage: git [-v | --version] ...
+
+✅ Correct Usage:
+
+PS C:\Users\MAHI-IT> git --version
+git version 2.49.0.windows.1
+
+🖥️ Git Bash
+
+$ git -v
+git version 2.49.0.windows.1
+
+$ git -version
+unknown option: -version
+
+$ git --version
+git version 2.49.0.windows.1
+
+🐍 Checking Python Version
+
+PS C:\Users\MAHI-IT> python --version
+Python 3.13.3
+
+🔧 Git Initialization
+
+🕒 Time: 01:04:07
+
+PS C:\Users\MAHI-IT> git init
+Reinitialized existing Git repository in C:/Users/MAHI-IT/.git/
+
+📌 Purpose: Initializes a Git repository in your project folder.
+📁 Sample Files & Python Code
+sample.py
+
+a = 7
+b = 8
+print(a + b)
+
+▶️ Run Result:
+
+PS D:\Ustad\Git> python .\sample.py
+15
+
+multiplication.py
+
+c = 3
+d = 12
+print(c * d)
+
+▶️ Run Result:
+
+PS D:\Ustad\Git> python .\multiplication.py
+36
+
+📥 Git Command: add
+
+🕒 Time: 01:12:04
+
+git add sample.py
+
+🔄 Symbol changed:
+
+    U → Untracked
+
+    A → Added
+
+📝 Git Command: commit
+
+PS D:\Ustad\Git> git commit -m "This python code is simply add two variables"
+
+🧾 Output:
+
+[master (root-commit) 57c3c96] This python code is simply add two variables
+ 1 file changed, 5 insertions(+)
+ create mode 100644 sample.py
+
+PS D:\Ustad\Git> git add multiplication.py
+PS D:\Ustad\Git> git commit -m "This python file is used to multiply two numbers"
+
+🧾 Output:
+
+[master beaf204] This python file is used to multiply two numbers
+ 1 file changed, 6 insertions(+)
+ create mode 100644 multiplication.py
+
+📋 Git Status & Log
+
+git status
+
+✔️ Clean working tree:
+
+On branch master
+nothing to commit, working tree clean
+
+git log
+
+🧾 Output:
+
+commit beaf2043... (HEAD -> master)
+Author: mahisalman <mahi.salman@gmail.com>
+Date:   Mon May 26 15:06:17 2025 +0600
+
+    This python file is used to multiply two numbers
+
+commit 57c3c969...
+Author: mahisalman <mahi.salman@gmail.com>
+Date:   Mon May 26 15:02:08 2025 +0600
+
+    This python code is simply add two variables
+
+🔁 Code Modified & Tracked Again
+
+🕒 Time: 01:27:00
+sample.py updated:
+
+a = 7
+b = 8
+e = 9
+print(a + b + e)
+
+▶️ Output:
+
+PS D:\Ustad\Git> python .\sample.py
+24
+
+multiplication.py updated:
+
+c = 3
+d = 12
+f = 5
+print(c * d * f)
+
+▶️ Output:
+
+PS D:\Ustad\Git> python .\multiplication.py
+180
+
+🕵️ Checking Git Status
+
+git status
+
+🔺 Output:
+
+Changes not staged for commit:
+  modified:   sample.py
+  modified:   multiplication.py
+
+🔄 Stage & Commit One File
+
+git add sample.py
+git commit -m "added another integer value to add"
+
+🧾 Output:
+
+[master 39c96f2] added another integer value to add
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+🧠 Summary of Commands
+Command	Purpose
+git init	Initialize Git in the project folder
+git add	Stage files for commit
+git commit	Save the staged changes with message
+git status	Check current state of working tree
+git log	View commit history
+
+🔚 End of Topic 2
+🕒 Total Duration: ~40 minutes
+
+-------------------------------------------------------------------
+01:40:05
+git push
+
+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
+
+token
+
+Never used • Expires on Thu, Jun 26 2025 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+PS D:\Ustad\Git> git add multiplication.py
+
+PS D:\Ustad\Git> git commit -m 'Added another method for multiplication again'        
+[master 6fb972d] Added another method for multiplication again
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+PS D:\Ustad\Git> git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 350 bytes | 350.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/mahisalman/GIT_for_Python_27052025.git
+To https://github.com/mahisalman/Git.git
+   fe5d809..6fb972d  master -> master
+branch 'master' set up to track 'origin/master'.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Topic - 3
+=========
+What is GitHub and how it works
+Creating and managing repositories on GitHub
+Cloning and pushing code
+Branching and merging basics
+Typical project folder structure
+Best practices for organizing codebase
+
+1:50:00
+
+git branch
+git push -u origin master
+git checkout -b master
+git status
+git commit -m 'Added another branch'
+git push -u origin main
+git push -u origin master
+git push -u origin developer
+git branch -m master main
+git checkout -b aaa
+git branch -d aaa
+git checkout main
+git branch -d aaa
+git push -u origin designer 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+PS D:\Ustad\Git> git branch
+* master
+
+PS D:\Ustad\Git> git checkout -b devoloper
+Switched to a new branch 'devoloper'
+
+PS D:\Ustad\Git> git branch
+* devoloper
+  master
+
+PS D:\Ustad\Git> git push -u origin master
+Everything up-to-date
+
+PS D:\Ustad\Git> git checkout -b master
+
+PS D:\Ustad\Git> git status
+nothing to commit, working tree clean
+
+PS D:\Ustad\Git> git commit -m 'Added another branch'
+On branch devoloper
+
+PS D:\Ustad\Git> git push -u origin main
+error: src refspec main does not match any
+
+PS D:\Ustad\Git> git push -u origin master
+branch 'master' set up to track 'origin/master'.
+
+PS D:\Ustad\Git> git push -u origin developer
+error: src refspec developer does not match any
+error: failed to push some refs to 'https://github.com/mahisalman/Git.git'
+error: src refspec main does not match any
+
+PS D:\Ustad\Git> git push -u origin master
+branch 'master' set up to track 'origin/master'.
+
+PS D:\Ustad\Git> git branch -m master main
+
+PS D:\Ustad\Git> git push -u origin main
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/mahisalman/GIT_for_Python_27052025.git
+remote:
+remote: Create a pull request for 'main' on GitHub by visiting:
+remote:      https://github.com/mahisalman/GIT_for_Python_27052025/pull/new/main
+remote:
+To https://github.com/mahisalman/Git.git
+branch 'main' set up to track 'origin/main'.
+* devoloper
+  main
+Switched to a new branch 'designer'
+
+PS D:\Ustad\Git> git branch
+* designer
+  main
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+
+PS D:\Ustad\Git> git push -u origin main
+branch 'main' set up to track 'origin/main'.
+
+PS D:\Ustad\Git> git branch
+  devoloper
+  main
+Reinitialized existing Git repository in D:/Ustad/Git/.git/
+
+PS D:\Ustad\Git> git push -u origin main
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:   https://github.com/mahisalman/GIT_for_Python_27052025.git
+remote:
+remote: Create a pull request for 'designer' on GitHub by visiting:
+remote:
+To https://github.com/mahisalman/Git.git
+branch 'designer' set up to track 'origin/designer'.
+
+PS D:\Ustad\Git> git branch -d master
+
+PS D:\Ustad\Git> git checkout main
+Switched to branch 'main'
+
+PS D:\Ustad\Git> git branch
+  designer
+  devoloper
+* main
+
+PS D:\Ustad\Git> git checkout -b aaa
+Switched to a new branch 'aaa'
+
+PS D:\Ustad\Git> git branch
+* aaa
+  designer
+  devoloper
+  main
+
+PS D:\Ustad\Git> git branch -d aaa
+error: cannot delete branch 'aaa' used by worktree at 'D:/Ustad/Git'
+
+PS D:\Ustad\Git> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+PS D:\Ustad\Git> git branch
+  aaa
+  designer
+  devoloper
+* main
+
+PS D:\Ustad\Git> git branch -d aaa
+Deleted branch aaa (was 6fb972d).
+
+PS D:\Ustad\Git> git branch
+  designer
+  devoloper
+* main
+
+PS D:\Ustad\Git> git push -u origin main    
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+
+PS D:\Ustad\Git> git push -u origin developer
+error: src refspec developer does not match any
+error: failed to push some refs to 'https://github.com/mahisalman/Git.git'
+
+PS D:\Ustad\Git> git push -u origin devoloper
+branch 'devoloper' set up to track 'origin/devoloper'.
+Everything up-to-date
+
+PS D:\Ustad\Git> git push -u origin designer 
+branch 'designer' set up to track 'origin/designer'.
+Everything up-to-date
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+git add division.py
+git commit -m 'another division program is added'
+git status
+git branch
+git push -u origin main
+------------------------------------------------------------------------------
+PS D:\Ustad\Git> git add division.py
+
+PS D:\Ustad\Git> git commit -m 'another division program is added'
+[main 5757bdc] another division program is added
+ 1 file changed, 5 insertions(+)
+ create mode 100644 division.py
+
+PS D:\Ustad\Git> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)  
+
+nothing to commit, working tree clean
+
+PS D:\Ustad\Git> git branch
+  designer
+  devoloper
+* main
+
+PS D:\Ustad\Git> git push -u origin main     
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 349 bytes | 116.00 KiB/s, done. 
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/mahisalman/GIT_for_Python_27052025.git
+To https://github.com/mahisalman/Git.git
+   6fb972d..5757bdc  main -> main
+branch 'main' set up to track 'origin/main'.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
